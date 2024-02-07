@@ -1,0 +1,65 @@
+{
+    "timestamp": 1707274831.351434,
+    "devices": [
+        {
+            "id": "ebd537eaa61378cf027zsj",
+            "ip": "10.0.0.59",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 14",
+            "key": "ik?<q_Sb8>h1IL{k",
+            "mac": "50:8a:06:57:70:8a",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 10,
+                    "23": 991,
+                    "24": "0116026e00f9",
+                    "25": "0032320000000000000001f40000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "eba246787fb7bc5633ni0b",
+            "ip": "10.0.0.8",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 15",
+            "key": "^>@lXjuVA.1.ulD+",
+            "mac": "50:8a:06:59:8b:92",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 1000,
+                    "23": 905,
+                    "24": "013a037801fe",
+                    "25": "0032320000000000000001f40000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        }
+    ]
+}
