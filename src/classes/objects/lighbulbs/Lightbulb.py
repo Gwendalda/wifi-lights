@@ -1,6 +1,7 @@
 import tinytuya
 import json
 
+from overrides import override
 
 class LightBulb(tinytuya.BulbDevice):
     # Device info is a dictionary contained within the devices.json file. It contains a list of device dictionary elements.
