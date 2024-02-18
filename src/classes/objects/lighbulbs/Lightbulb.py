@@ -4,54 +4,92 @@ import json
 from overrides import override
 
 class LightBulb(tinytuya.BulbDevice):
-    # Device info is a dictionary contained within the devices.json file. It contains a list of device dictionary elements.
+    def __init__(self, device_id, ip, local_key):
+        super().__init__(device_id, ip, local_key)
+        self._device_id = device_id
+        self._ip = ip
+        self._local_key = local_key
 
-    def __init__(self, device_info):
-        super().__init__(device_info['id'], device_info['ip'], device_info['key'])
-        self.set_version(3.3)
-        self.name = device_info['name']
-        self.device_info = device_info
-        self.row = int(device_info['name'].split(' ')[1].split('-')[0])-1
-        self.column = int(device_info['name'].split(' ')[1].split('-')[1])-1
-
-
-    @staticmethod
-    def load_devices(filepath):
-        with open(filepath, 'r') as file:
-            devices = json.load(file)
-        output = []
-        for device in devices:
-            output.append(LightBulb(device))
-        return output
-    
+    @override
     def get_status(self):
-        DPS_KEY_CORRESPONDENCE = {
-        '20' : 'switch',
-        '21' : 'Mode',
-        '22' : 'Brightness',
-        '23' : 'color_temp',
-        '24' : 'Color',
-        '25' : 'Scene',
-        '26' : 'Left_time',
-        '27' : 'Music',
-        '28' : 'Debugger',
-        '29' : 'Debug'
-        }
-        status = self.status()
-        status_refactor = {}
-        for key in status['dps'].keys():
-            if key in DPS_KEY_CORRESPONDENCE.keys():
-                status_refactor[DPS_KEY_CORRESPONDENCE[key]] = status['dps'][key]
-        status_string = f"{self.name} : %r" % status_refactor
-        return status_string
-    
-    def __str__(self):
-        return str(self.device_info)
+        return super().status()
 
+    @override
+    def set_status(self, status):
+        return super().set_status(status)
 
-if __name__ == "__main__":
-    filepath = 'devices.json'  # Update this path
-    devices = LightBulb.load_devices(filepath)
-    for device in devices:
-        print(device.row, device.column)
-        print("\n")
+    @override
+    def get_colour(self):
+        return super().colour()
+
+    @override
+    def set_colour(self, colour):
+        return super().set_colour(colour)
+
+    @override
+    def get_brightness(self):
+        return super().brightness()
+
+    @override
+    def set_brightness(self, brightness):
+        return super().set_brightness(brightness)
+
+    @override
+    def get_temperature(self):
+        return super().temperature()
+
+    @override
+    def set_temperature(self, temperature):
+        return super().set_temperature(temperature)
+
+    @override
+    def get_mode(self):
+        return super().mode()
+
+    @override
+    def set_mode(self, mode):
+        return super().set_mode(mode)
+
+    @override
+    def get_scene(self):
+        return super().scene()
+
+    @override
+    def set_scene(self, scene):
+        return super().set_scene(scene)
+
+    @override
+    def get_music(self):
+        return super().music()
+
+    @override
+    def set_music(self, music):
+        return super().set_music(music)
+
+    @override
+    def get_name(self):
+        return super().name()
+
+    @override
+    def set_name(self, name):
+        return super().set_name(name)
+
+    @override
+    def get_version(self):
+        return super().version()
+
+    @override
+    def get_model(self):
+        return super().model()
+
+    @override
+    def get_dps(self):
+        return super().dps()
+
+    @override
+    def set_dps(self, dps):
+        return super().set_dps(dps)
+
+    @override
+    def get_all(self):
+        return super().all()
