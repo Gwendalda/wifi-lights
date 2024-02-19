@@ -1,0 +1,6 @@
+setup.py
+wifi_lights.egg-info/PKG-INFO
+wifi_lights.egg-info/SOURCES.txt
+wifi_lights.egg-info/dependency_links.txt
+wifi_lights.egg-info/requires.txt
+wifi_lights.egg-info/top_level.txt
