@@ -1,6 +1,7 @@
 import time
 import tinytuya
 import json
+import pprint
 
 def get_all_devices() -> dict:
     with open('devices.json') as f:
@@ -27,11 +28,23 @@ def main():
     devices = get_all_devices()
     switch = devices["switches"][0]
     switch.set_version(3.3)
-    print(switch)
     current_on_off_status = None
     current_brighness_status = None
     while True:
         status = switch.status()
+        for bulb in devices["bulbs"]:
+            time0 = time.time()
+            print(bulb.status())
+            if time.time() - time0 > 5:
+                print("Timeout")
+                tinytuya.scan()
+                with open("snapshot.json", "r") as f:
+                    snapshot = json.load(f)
+                with open("devices.json", "w") as f:
+                    json.dump(snapshot["devices"], f)
+                devices = get_all_devices()
+                switch = devices["switches"][0]
+                switch.set_version(3.3)   
         if status["dps"]['1'] == False and devices["bulbs"][0].status()["dps"]['20'] == True and current_on_off_status != False:
             print("Switch is off")
             current_on_off_status = False
@@ -40,8 +53,7 @@ def main():
         if status["dps"]['1'] == True and devices["bulbs"][0].status()["dps"]['20'] == False and current_on_off_status != True:
             print("Switch is on")
             current_on_off_status = True
-            bulb_status = devices["bulbs"][0].status()
-            print(bulb_status)
+            print(devices["bulbs"][0].status()["dps"]['20'])
             for bulb in devices["bulbs"]:
                 bulb.turn_on(nowait=True)
         if status['dps']['2'] != current_brighness_status and current_on_off_status == True:
@@ -52,12 +64,4 @@ def main():
 
 
 if __name__ == "__main__":
-     main()
-    #devices = get_all_devices()
-    #for bulb in devices["bulbs"]:
-        #bulb.set_colour(255, 125, 125, nowait=True)
-        #bulb.set_mode(mode='color', nowait=True)
-        #bulb.set_mode(mode='scene', nowait=True)
-        #bulb.set_value(25, """c9303002016003e803e80000000030300200ee03e803e800000000""")
-        #0201fc0200c8032001b800000000032001b80000
-        #time.sleep(0.5)
+    main()
