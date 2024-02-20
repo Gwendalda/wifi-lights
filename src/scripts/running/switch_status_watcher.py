@@ -2,10 +2,11 @@ import time
 import tinytuya
 import json
 import pprint
+import os
 
 def get_all_devices() -> dict:
-    with open('devices.json') as f:
-        data = json.load(f)
+    with open(os.path.curdir+'/snapshot.json') as f:
+        data = json.load(f)["devices"]
     devices = {
         "bulbs": [],
         "switches": []
@@ -13,17 +14,17 @@ def get_all_devices() -> dict:
     for device in data:
         if device["ip"] == "":
             continue
-        if device["product_name"] == "60W Tune + Color":
+        if "1" not in device["dps"]["dps"]:
             device_instantiation = tinytuya.BulbDevice(device["id"], device["ip"], device["key"])
             device_instantiation.set_version(3.3)
             devices["bulbs"].append(device_instantiation)
-        if device["product_name"] == "KS-7012":
+        if "1" in device["dps"]['dps']:
             device_instantiation = tinytuya.OutletDevice(device["id"], device["ip"], device["key"])
             device_instantiation.set_version(3.3)
             devices["switches"].append(device_instantiation)
+        
     return devices
-    
-
+     
 def main():
     devices = get_all_devices()
     switch = devices["switches"][0]
@@ -38,10 +39,6 @@ def main():
             if time.time() - time0 > 5:
                 print("Timeout")
                 tinytuya.scan()
-                with open("snapshot.json", "r") as f:
-                    snapshot = json.load(f)
-                with open("devices.json", "w") as f:
-                    json.dump(snapshot["devices"], f)
                 devices = get_all_devices()
                 switch = devices["switches"][0]
                 switch.set_version(3.3)   
