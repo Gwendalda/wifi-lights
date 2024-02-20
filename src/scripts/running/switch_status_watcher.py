@@ -4,8 +4,11 @@ import json
 import pprint
 import os
 
+SNAPSHOT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))+ "/snapshot.json"
+
+
 def get_all_devices() -> dict:
-    with open(os.path.curdir+'/snapshot.json') as f:
+    with open(SNAPSHOT_PATH) as f:
         data = json.load(f)["devices"]
     devices = {
         "bulbs": [],
