@@ -8,6 +8,7 @@ SNAPSHOT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 
 def get_all_devices() -> dict:
+
     with open(SNAPSHOT_PATH) as f:
         data = json.load(f)["devices"]
     devices = {
@@ -29,9 +30,17 @@ def get_all_devices() -> dict:
     return devices
      
 def main():
-    devices = get_all_devices()
-    switch = devices["switches"][0]
-    switch.set_version(3.3)
+    try:
+        devices = get_all_devices()
+        switch = devices["switches"][0]
+        switch.set_version(3.3)
+    except FileNotFoundError:
+        print("Snapshot file not found")
+        tinytuya.scan()
+        print("Scanning for devices and creating snapshot")
+        devices = get_all_devices()
+        switch = devices["switches"][0]
+        switch.set_version(3.3)
     current_on_off_status = None
     current_brighness_status = None
     while True:
