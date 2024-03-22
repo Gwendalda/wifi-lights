@@ -1,6 +1,87 @@
 {
     "result": [
         {
+            "active_time": 1706890374,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1706850523,
+            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
+            "id": "eba125c8f6d40f6612o373",
+            "ip": "96.20.201.70",
+            "lat": "45.4800",
+            "local_key": "[+lC`xh+-<orrjy{",
+            "lon": "-73.6400",
+            "model": "",
+            "name": "60W Tune + Color 8",
+            "online": true,
+            "owner_id": "186597750",
+            "product_id": "7ikqxfqce1pjrwal",
+            "product_name": "60W Tune + Color",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": true
+                },
+                {
+                    "code": "work_mode",
+                    "value": "colour"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 255
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 300
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":35,\"s\":769,\"v\":255}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "music_data",
+                    "value": ""
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                },
+                {
+                    "code": "random_timing",
+                    "value": "AAAA"
+                }
+            ],
+            "sub": false,
+            "time_zone": "-05:00",
+            "uid": "az1706890258988MU2Hy",
+            "update_time": 1710898383,
+            "uuid": "7d0bc5a078836b28"
+        },
+        {
             "active_time": 1708286318,
             "biz_type": 0,
             "category": "dj",
@@ -24,23 +105,23 @@
                 },
                 {
                     "code": "work_mode",
-                    "value": "white"
+                    "value": "colour"
                 },
                 {
                     "code": "bright_value_v2",
-                    "value": 1000
+                    "value": 255
                 },
                 {
                     "code": "temp_value_v2",
-                    "value": 99
+                    "value": 300
                 },
                 {
                     "code": "colour_data_v2",
-                    "value": "{\"h\":0,\"s\":1000,\"v\":1000}"
+                    "value": "{\"h\":27,\"s\":789,\"v\":255}"
                 },
                 {
                     "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
                 },
                 {
                     "code": "countdown_1",
@@ -78,22 +159,22 @@
             "sub": false,
             "time_zone": "-05:00",
             "uid": "az1706890258988MU2Hy",
-            "update_time": 1708287150,
+            "update_time": 1710898379,
             "uuid": "40f0975239810f28"
         },
         {
-            "active_time": 1708286351,
+            "active_time": 1706890372,
             "biz_type": 0,
             "category": "dj",
-            "create_time": 1706847195,
+            "create_time": 1706846065,
             "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "eb7fe4b5a8bebc88138avl",
+            "id": "ebb2c49e4cc29e5b39pwzl",
             "ip": "96.20.201.70",
             "lat": "45.4800",
-            "local_key": "Ocsz|hz;cS0Hy:)t",
+            "local_key": "9J9q_PzVIYe{&&sr",
             "lon": "-73.6400",
             "model": "",
-            "name": "60W Tune + Color 21",
+            "name": "60W Tune + Color 6",
             "online": true,
             "owner_id": "186597750",
             "product_id": "7ikqxfqce1pjrwal",
@@ -105,23 +186,23 @@
                 },
                 {
                     "code": "work_mode",
-                    "value": "white"
+                    "value": "colour"
                 },
                 {
                     "code": "bright_value_v2",
-                    "value": 1000
+                    "value": 255
                 },
                 {
                     "code": "temp_value_v2",
-                    "value": 100
+                    "value": 300
                 },
                 {
                     "code": "colour_data_v2",
-                    "value": "{\"h\":0,\"s\":1000,\"v\":1000}"
+                    "value": "{\"h\":24,\"s\":868,\"v\":255}"
                 },
                 {
                     "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
                 },
                 {
                     "code": "countdown_1",
@@ -159,8 +240,89 @@
             "sub": false,
             "time_zone": "-05:00",
             "uid": "az1706890258988MU2Hy",
-            "update_time": 1708287138,
-            "uuid": "5315fe6c4e829e8d"
+            "update_time": 1710857154,
+            "uuid": "2987f2b602cb12c4"
+        },
+        {
+            "active_time": 1706890369,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1706847169,
+            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
+            "id": "eba2fad7eb010147fcczav",
+            "ip": "96.20.201.70",
+            "lat": "45.4800",
+            "local_key": "3(l-E/?j[2t&.pIS",
+            "lon": "-73.6400",
+            "model": "",
+            "name": "60W Tune + Color 5",
+            "online": true,
+            "owner_id": "186597750",
+            "product_id": "7ikqxfqce1pjrwal",
+            "product_name": "60W Tune + Color",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": true
+                },
+                {
+                    "code": "work_mode",
+                    "value": "colour"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 255
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 300
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":30,\"s\":798,\"v\":255}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "music_data",
+                    "value": ""
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                },
+                {
+                    "code": "random_timing",
+                    "value": "AAAA"
+                }
+            ],
+            "sub": false,
+            "time_zone": "-05:00",
+            "uid": "az1706890258988MU2Hy",
+            "update_time": 1710857151,
+            "uuid": "c4c9de389eb6ccb4"
         },
         {
             "active_time": 1708286329,
@@ -186,23 +348,23 @@
                 },
                 {
                     "code": "work_mode",
-                    "value": "white"
+                    "value": "colour"
                 },
                 {
                     "code": "bright_value_v2",
-                    "value": 1000
+                    "value": 255
                 },
                 {
                     "code": "temp_value_v2",
-                    "value": 49
+                    "value": 300
                 },
                 {
                     "code": "colour_data_v2",
-                    "value": "{\"h\":0,\"s\":1000,\"v\":1000}"
+                    "value": "{\"h\":27,\"s\":770,\"v\":255}"
                 },
                 {
                     "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
                 },
                 {
                     "code": "countdown_1",
@@ -240,7 +402,7 @@
             "sub": false,
             "time_zone": "-05:00",
             "uid": "az1706890258988MU2Hy",
-            "update_time": 1708287138,
+            "update_time": 1710857151,
             "uuid": "be027fd0777f7402"
         },
         {
@@ -267,23 +429,23 @@
                 },
                 {
                     "code": "work_mode",
-                    "value": "white"
+                    "value": "colour"
                 },
                 {
                     "code": "bright_value_v2",
-                    "value": 1000
+                    "value": 255
                 },
                 {
                     "code": "temp_value_v2",
-                    "value": 125
+                    "value": 300
                 },
                 {
                     "code": "colour_data_v2",
-                    "value": "{\"h\":0,\"s\":1000,\"v\":1000}"
+                    "value": "{\"h\":26,\"s\":866,\"v\":255}"
                 },
                 {
                     "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
                 },
                 {
                     "code": "countdown_1",
@@ -321,7 +483,7 @@
             "sub": false,
             "time_zone": "-05:00",
             "uid": "az1706890258988MU2Hy",
-            "update_time": 1708287138,
+            "update_time": 1710857151,
             "uuid": "b7d0b1e0b7907db0"
         },
         {
@@ -354,494 +516,8 @@
             "sub": false,
             "time_zone": "-05:00",
             "uid": "az1706890258988MU2Hy",
-            "update_time": 1708286891,
+            "update_time": 1710807148,
             "uuid": "34333564c45bbe671aa6"
-        },
-        {
-            "active_time": 1706890372,
-            "biz_type": 0,
-            "category": "dj",
-            "create_time": 1706846065,
-            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "ebb2c49e4cc29e5b39pwzl",
-            "ip": "96.20.201.70",
-            "lat": "45.4800",
-            "local_key": "9J9q_PzVIYe{&&sr",
-            "lon": "-73.6400",
-            "model": "",
-            "name": "60W Tune + Color 6",
-            "online": true,
-            "owner_id": "186597750",
-            "product_id": "7ikqxfqce1pjrwal",
-            "product_name": "60W Tune + Color",
-            "status": [
-                {
-                    "code": "switch_led",
-                    "value": true
-                },
-                {
-                    "code": "work_mode",
-                    "value": "colour"
-                },
-                {
-                    "code": "bright_value_v2",
-                    "value": 1000
-                },
-                {
-                    "code": "temp_value_v2",
-                    "value": 134
-                },
-                {
-                    "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
-                },
-                {
-                    "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
-                },
-                {
-                    "code": "countdown_1",
-                    "value": 0
-                },
-                {
-                    "code": "music_data",
-                    "value": ""
-                },
-                {
-                    "code": "control_data",
-                    "value": ""
-                },
-                {
-                    "code": "rhythm_mode",
-                    "value": "AAAAAAA="
-                },
-                {
-                    "code": "sleep_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "wakeup_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "remote_switch",
-                    "value": true
-                },
-                {
-                    "code": "random_timing",
-                    "value": "AAAA"
-                }
-            ],
-            "sub": false,
-            "time_zone": "-05:00",
-            "uid": "az1706890258988MU2Hy",
-            "update_time": 1708286099,
-            "uuid": "2987f2b602cb12c4"
-        },
-        {
-            "active_time": 1706890380,
-            "biz_type": 0,
-            "category": "dj",
-            "create_time": 1706850488,
-            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "ebfcbbcc4eadce9069teir",
-            "ip": "96.20.201.70",
-            "lat": "45.4800",
-            "local_key": "V:'?!8rpg2k_(@n*",
-            "lon": "-73.6400",
-            "model": "",
-            "name": "60W Tune + Color 13",
-            "online": true,
-            "owner_id": "186597750",
-            "product_id": "7ikqxfqce1pjrwal",
-            "product_name": "60W Tune + Color",
-            "status": [
-                {
-                    "code": "switch_led",
-                    "value": true
-                },
-                {
-                    "code": "work_mode",
-                    "value": "colour"
-                },
-                {
-                    "code": "bright_value_v2",
-                    "value": 1000
-                },
-                {
-                    "code": "temp_value_v2",
-                    "value": 152
-                },
-                {
-                    "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
-                },
-                {
-                    "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
-                },
-                {
-                    "code": "countdown_1",
-                    "value": 0
-                },
-                {
-                    "code": "music_data",
-                    "value": ""
-                },
-                {
-                    "code": "control_data",
-                    "value": ""
-                },
-                {
-                    "code": "rhythm_mode",
-                    "value": "AAAAAAA="
-                },
-                {
-                    "code": "sleep_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "wakeup_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "remote_switch",
-                    "value": true
-                },
-                {
-                    "code": "random_timing",
-                    "value": "AAAA"
-                }
-            ],
-            "sub": false,
-            "time_zone": "-05:00",
-            "uid": "az1706890258988MU2Hy",
-            "update_time": 1708286099,
-            "uuid": "0b1f270de48aff78"
-        },
-        {
-            "active_time": 1706890343,
-            "biz_type": 0,
-            "category": "dj",
-            "create_time": 1706846106,
-            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "eb5d3aa1565842d64akeqt",
-            "ip": "96.20.201.70",
-            "lat": "45.4800",
-            "local_key": "<[}iTosF@Rv/#rZ=",
-            "lon": "-73.6400",
-            "model": "",
-            "name": "0x0",
-            "online": true,
-            "owner_id": "186597750",
-            "product_id": "7ikqxfqce1pjrwal",
-            "product_name": "60W Tune + Color",
-            "status": [
-                {
-                    "code": "switch_led",
-                    "value": true
-                },
-                {
-                    "code": "work_mode",
-                    "value": "colour"
-                },
-                {
-                    "code": "bright_value_v2",
-                    "value": 1000
-                },
-                {
-                    "code": "temp_value_v2",
-                    "value": 167
-                },
-                {
-                    "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
-                },
-                {
-                    "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
-                },
-                {
-                    "code": "countdown_1",
-                    "value": 0
-                },
-                {
-                    "code": "music_data",
-                    "value": ""
-                },
-                {
-                    "code": "control_data",
-                    "value": ""
-                },
-                {
-                    "code": "rhythm_mode",
-                    "value": "AAAAAAA="
-                },
-                {
-                    "code": "sleep_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "wakeup_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "remote_switch",
-                    "value": true
-                },
-                {
-                    "code": "random_timing",
-                    "value": "AAAA"
-                }
-            ],
-            "sub": false,
-            "time_zone": "-05:00",
-            "uid": "az1706890258988MU2Hy",
-            "update_time": 1708286087,
-            "uuid": "0e987383b1859125"
-        },
-        {
-            "active_time": 1706890368,
-            "biz_type": 0,
-            "category": "dj",
-            "create_time": 1706847136,
-            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "eb9252dc4a9c815baalirj",
-            "ip": "96.20.201.70",
-            "lat": "45.4800",
-            "local_key": "D~#?#*}{MQU#dD0f",
-            "lon": "-73.6400",
-            "model": "",
-            "name": "60W Tune + Color 4",
-            "online": true,
-            "owner_id": "186597750",
-            "product_id": "7ikqxfqce1pjrwal",
-            "product_name": "60W Tune + Color",
-            "status": [
-                {
-                    "code": "switch_led",
-                    "value": true
-                },
-                {
-                    "code": "work_mode",
-                    "value": "colour"
-                },
-                {
-                    "code": "bright_value_v2",
-                    "value": 1000
-                },
-                {
-                    "code": "temp_value_v2",
-                    "value": 133
-                },
-                {
-                    "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
-                },
-                {
-                    "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
-                },
-                {
-                    "code": "countdown_1",
-                    "value": 0
-                },
-                {
-                    "code": "music_data",
-                    "value": ""
-                },
-                {
-                    "code": "control_data",
-                    "value": ""
-                },
-                {
-                    "code": "rhythm_mode",
-                    "value": "AAAAAAA="
-                },
-                {
-                    "code": "sleep_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "wakeup_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "remote_switch",
-                    "value": true
-                },
-                {
-                    "code": "random_timing",
-                    "value": "AAAA"
-                }
-            ],
-            "sub": false,
-            "time_zone": "-05:00",
-            "uid": "az1706890258988MU2Hy",
-            "update_time": 1708286087,
-            "uuid": "de061e89de8f40ab"
-        },
-        {
-            "active_time": 1706890377,
-            "biz_type": 0,
-            "category": "dj",
-            "create_time": 1706850469,
-            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "ebb73b92e64ea7afd1omef",
-            "ip": "96.20.201.70",
-            "lat": "45.4800",
-            "local_key": "DQdP0KwUjhlikdE2",
-            "lon": "-73.6400",
-            "model": "",
-            "name": "60W Tune + Color 9",
-            "online": true,
-            "owner_id": "186597750",
-            "product_id": "7ikqxfqce1pjrwal",
-            "product_name": "60W Tune + Color",
-            "status": [
-                {
-                    "code": "switch_led",
-                    "value": true
-                },
-                {
-                    "code": "work_mode",
-                    "value": "colour"
-                },
-                {
-                    "code": "bright_value_v2",
-                    "value": 1000
-                },
-                {
-                    "code": "temp_value_v2",
-                    "value": 155
-                },
-                {
-                    "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
-                },
-                {
-                    "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
-                },
-                {
-                    "code": "countdown_1",
-                    "value": 0
-                },
-                {
-                    "code": "music_data",
-                    "value": ""
-                },
-                {
-                    "code": "control_data",
-                    "value": ""
-                },
-                {
-                    "code": "rhythm_mode",
-                    "value": "AAAAAAA="
-                },
-                {
-                    "code": "sleep_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "wakeup_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "remote_switch",
-                    "value": true
-                },
-                {
-                    "code": "random_timing",
-                    "value": "AAAA"
-                }
-            ],
-            "sub": false,
-            "time_zone": "-05:00",
-            "uid": "az1706890258988MU2Hy",
-            "update_time": 1708286087,
-            "uuid": "55662803133204b2"
-        },
-        {
-            "active_time": 1706890374,
-            "biz_type": 0,
-            "category": "dj",
-            "create_time": 1706850523,
-            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "eba125c8f6d40f6612o373",
-            "ip": "96.20.201.70",
-            "lat": "45.4800",
-            "local_key": "[+lC`xh+-<orrjy{",
-            "lon": "-73.6400",
-            "model": "",
-            "name": "60W Tune + Color 8",
-            "online": true,
-            "owner_id": "186597750",
-            "product_id": "7ikqxfqce1pjrwal",
-            "product_name": "60W Tune + Color",
-            "status": [
-                {
-                    "code": "switch_led",
-                    "value": true
-                },
-                {
-                    "code": "work_mode",
-                    "value": "colour"
-                },
-                {
-                    "code": "bright_value_v2",
-                    "value": 1000
-                },
-                {
-                    "code": "temp_value_v2",
-                    "value": 169
-                },
-                {
-                    "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
-                },
-                {
-                    "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
-                },
-                {
-                    "code": "countdown_1",
-                    "value": 0
-                },
-                {
-                    "code": "music_data",
-                    "value": ""
-                },
-                {
-                    "code": "control_data",
-                    "value": ""
-                },
-                {
-                    "code": "rhythm_mode",
-                    "value": "AAAAAAA="
-                },
-                {
-                    "code": "sleep_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "wakeup_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "remote_switch",
-                    "value": true
-                },
-                {
-                    "code": "random_timing",
-                    "value": "AAAA"
-                }
-            ],
-            "sub": false,
-            "time_zone": "-05:00",
-            "uid": "az1706890258988MU2Hy",
-            "update_time": 1708286086,
-            "uuid": "7d0bc5a078836b28"
         },
         {
             "active_time": 1706890373,
@@ -871,19 +547,19 @@
                 },
                 {
                     "code": "bright_value_v2",
-                    "value": 1000
+                    "value": 255
                 },
                 {
                     "code": "temp_value_v2",
-                    "value": 124
+                    "value": 300
                 },
                 {
                     "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
+                    "value": "{\"h\":30,\"s\":837,\"v\":255}"
                 },
                 {
                     "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
                 },
                 {
                     "code": "countdown_1",
@@ -921,22 +597,103 @@
             "sub": false,
             "time_zone": "-05:00",
             "uid": "az1706890258988MU2Hy",
-            "update_time": 1708286085,
+            "update_time": 1710727238,
             "uuid": "fe3e07f67eb9ca1b"
         },
         {
-            "active_time": 1706890369,
+            "active_time": 1706890343,
             "biz_type": 0,
             "category": "dj",
-            "create_time": 1706847169,
+            "create_time": 1706846106,
             "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "eba2fad7eb010147fcczav",
+            "id": "eb5d3aa1565842d64akeqt",
             "ip": "96.20.201.70",
             "lat": "45.4800",
-            "local_key": "3(l-E/?j[2t&.pIS",
+            "local_key": "<[}iTosF@Rv/#rZ=",
             "lon": "-73.6400",
             "model": "",
-            "name": "60W Tune + Color 5",
+            "name": "0x0",
+            "online": false,
+            "owner_id": "186597750",
+            "product_id": "7ikqxfqce1pjrwal",
+            "product_name": "60W Tune + Color",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": true
+                },
+                {
+                    "code": "work_mode",
+                    "value": "colour"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 255
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 300
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":24,\"s\":803,\"v\":255}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "music_data",
+                    "value": ""
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                },
+                {
+                    "code": "random_timing",
+                    "value": "AAAA"
+                }
+            ],
+            "sub": false,
+            "time_zone": "-05:00",
+            "uid": "az1706890258988MU2Hy",
+            "update_time": 1710727237,
+            "uuid": "0e987383b1859125"
+        },
+        {
+            "active_time": 1706890377,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1706850469,
+            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
+            "id": "ebb73b92e64ea7afd1omef",
+            "ip": "96.20.201.70",
+            "lat": "45.4800",
+            "local_key": "DQdP0KwUjhlikdE2",
+            "lon": "-73.6400",
+            "model": "",
+            "name": "60W Tune + Color 9",
             "online": true,
             "owner_id": "186597750",
             "product_id": "7ikqxfqce1pjrwal",
@@ -952,19 +709,19 @@
                 },
                 {
                     "code": "bright_value_v2",
-                    "value": 1000
+                    "value": 255
                 },
                 {
                     "code": "temp_value_v2",
-                    "value": 123
+                    "value": 300
                 },
                 {
                     "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
+                    "value": "{\"h\":23,\"s\":798,\"v\":255}"
                 },
                 {
                     "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
                 },
                 {
                     "code": "countdown_1",
@@ -1002,8 +759,170 @@
             "sub": false,
             "time_zone": "-05:00",
             "uid": "az1706890258988MU2Hy",
-            "update_time": 1708286085,
-            "uuid": "c4c9de389eb6ccb4"
+            "update_time": 1710486829,
+            "uuid": "55662803133204b2"
+        },
+        {
+            "active_time": 1706890380,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1706850488,
+            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
+            "id": "ebfcbbcc4eadce9069teir",
+            "ip": "96.20.201.70",
+            "lat": "45.4800",
+            "local_key": "V:'?!8rpg2k_(@n*",
+            "lon": "-73.6400",
+            "model": "",
+            "name": "60W Tune + Color 13",
+            "online": true,
+            "owner_id": "186597750",
+            "product_id": "7ikqxfqce1pjrwal",
+            "product_name": "60W Tune + Color",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": true
+                },
+                {
+                    "code": "work_mode",
+                    "value": "colour"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 255
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 300
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":24,\"s\":755,\"v\":255}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "music_data",
+                    "value": ""
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                },
+                {
+                    "code": "random_timing",
+                    "value": "AAAA"
+                }
+            ],
+            "sub": false,
+            "time_zone": "-05:00",
+            "uid": "az1706890258988MU2Hy",
+            "update_time": 1710486782,
+            "uuid": "0b1f270de48aff78"
+        },
+        {
+            "active_time": 1706890368,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1706847136,
+            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
+            "id": "eb9252dc4a9c815baalirj",
+            "ip": "96.20.201.70",
+            "lat": "45.4800",
+            "local_key": "D~#?#*}{MQU#dD0f",
+            "lon": "-73.6400",
+            "model": "",
+            "name": "60W Tune + Color 4",
+            "online": true,
+            "owner_id": "186597750",
+            "product_id": "7ikqxfqce1pjrwal",
+            "product_name": "60W Tune + Color",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": true
+                },
+                {
+                    "code": "work_mode",
+                    "value": "colour"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 255
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 300
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":33,\"s\":751,\"v\":255}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "music_data",
+                    "value": ""
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                },
+                {
+                    "code": "random_timing",
+                    "value": "AAAA"
+                }
+            ],
+            "sub": false,
+            "time_zone": "-05:00",
+            "uid": "az1706890258988MU2Hy",
+            "update_time": 1710486766,
+            "uuid": "de061e89de8f40ab"
         },
         {
             "active_time": 1706890354,
@@ -1033,19 +952,19 @@
                 },
                 {
                     "code": "bright_value_v2",
-                    "value": 1000
+                    "value": 255
                 },
                 {
                     "code": "temp_value_v2",
-                    "value": 176
+                    "value": 300
                 },
                 {
                     "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
+                    "value": "{\"h\":36,\"s\":859,\"v\":255}"
                 },
                 {
                     "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
                 },
                 {
                     "code": "countdown_1",
@@ -1083,8 +1002,89 @@
             "sub": false,
             "time_zone": "-05:00",
             "uid": "az1706890258988MU2Hy",
-            "update_time": 1708277874,
+            "update_time": 1710486761,
             "uuid": "cc9eb1d80e3eb269"
+        },
+        {
+            "active_time": 1708286351,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1706847195,
+            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
+            "id": "eb7fe4b5a8bebc88138avl",
+            "ip": "96.20.201.70",
+            "lat": "45.4800",
+            "local_key": "Ocsz|hz;cS0Hy:)t",
+            "lon": "-73.6400",
+            "model": "",
+            "name": "60W Tune + Color 21",
+            "online": true,
+            "owner_id": "186597750",
+            "product_id": "7ikqxfqce1pjrwal",
+            "product_name": "60W Tune + Color",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": true
+                },
+                {
+                    "code": "work_mode",
+                    "value": "colour"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 698
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 140
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":30,\"s\":840,\"v\":255}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "music_data",
+                    "value": ""
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                },
+                {
+                    "code": "random_timing",
+                    "value": "AAAA"
+                }
+            ],
+            "sub": false,
+            "time_zone": "-05:00",
+            "uid": "az1706890258988MU2Hy",
+            "update_time": 1710486755,
+            "uuid": "5315fe6c4e829e8d"
         },
         {
             "active_time": 1706890380,
@@ -1114,19 +1114,19 @@
                 },
                 {
                     "code": "bright_value_v2",
-                    "value": 1000
+                    "value": 255
                 },
                 {
                     "code": "temp_value_v2",
-                    "value": 109
+                    "value": 300
                 },
                 {
                     "code": "colour_data_v2",
-                    "value": "{\"h\":60,\"s\":843,\"v\":1000}"
+                    "value": "{\"h\":33,\"s\":812,\"v\":255}"
                 },
                 {
                     "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
+                    "value": "{\"scene_num\":2,\"scene_units\":[{\"bright\":0,\"h\":1000,\"s\":300,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":600}]}"
                 },
                 {
                     "code": "countdown_1",
@@ -1164,180 +1164,18 @@
             "sub": false,
             "time_zone": "-05:00",
             "uid": "az1706890258988MU2Hy",
-            "update_time": 1708277870,
+            "update_time": 1710486745,
             "uuid": "56cc092f31a83401"
-        },
-        {
-            "active_time": 1707273740,
-            "biz_type": 0,
-            "category": "dj",
-            "create_time": 1707273740,
-            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "eba246787fb7bc5633ni0b",
-            "ip": "24.48.93.70",
-            "lat": "45.5400",
-            "local_key": "^>@lXjuVA.1.ulD+",
-            "lon": "-73.6200",
-            "model": "",
-            "name": "60W Tune + Color 15",
-            "online": false,
-            "owner_id": "186597750",
-            "product_id": "7ikqxfqce1pjrwal",
-            "product_name": "60W Tune + Color",
-            "status": [
-                {
-                    "code": "switch_led",
-                    "value": true
-                },
-                {
-                    "code": "work_mode",
-                    "value": "colour"
-                },
-                {
-                    "code": "bright_value_v2",
-                    "value": 1000
-                },
-                {
-                    "code": "temp_value_v2",
-                    "value": 905
-                },
-                {
-                    "code": "colour_data_v2",
-                    "value": "{\"h\":244,\"s\":556,\"v\":1000}"
-                },
-                {
-                    "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
-                },
-                {
-                    "code": "countdown_1",
-                    "value": 0
-                },
-                {
-                    "code": "music_data",
-                    "value": ""
-                },
-                {
-                    "code": "control_data",
-                    "value": ""
-                },
-                {
-                    "code": "rhythm_mode",
-                    "value": "AAAAAAA="
-                },
-                {
-                    "code": "sleep_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "wakeup_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "remote_switch",
-                    "value": true
-                },
-                {
-                    "code": "random_timing",
-                    "value": "AAAA"
-                }
-            ],
-            "sub": false,
-            "time_zone": "-05:00",
-            "uid": "az1706890258988MU2Hy",
-            "update_time": 1708240176,
-            "uuid": "7754e63557de6eac"
-        },
-        {
-            "active_time": 1707273503,
-            "biz_type": 0,
-            "category": "dj",
-            "create_time": 1707273503,
-            "icon": "smart/icon/ay1550731047515t40X5/15905055362a00976de77.png",
-            "id": "ebd537eaa61378cf027zsj",
-            "ip": "24.48.93.70",
-            "lat": "45.5400",
-            "local_key": "ik?<q_Sb8>h1IL{k",
-            "lon": "-73.6200",
-            "model": "",
-            "name": "60W Tune + Color 14",
-            "online": false,
-            "owner_id": "186597750",
-            "product_id": "7ikqxfqce1pjrwal",
-            "product_name": "60W Tune + Color",
-            "status": [
-                {
-                    "code": "switch_led",
-                    "value": true
-                },
-                {
-                    "code": "work_mode",
-                    "value": "colour"
-                },
-                {
-                    "code": "bright_value_v2",
-                    "value": 10
-                },
-                {
-                    "code": "temp_value_v2",
-                    "value": 991
-                },
-                {
-                    "code": "colour_data_v2",
-                    "value": "{\"h\":244,\"s\":556,\"v\":1000}"
-                },
-                {
-                    "code": "scene_data_v2",
-                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":500,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":50,\"unit_switch_duration\":50,\"v\":0}]}"
-                },
-                {
-                    "code": "countdown_1",
-                    "value": 0
-                },
-                {
-                    "code": "music_data",
-                    "value": ""
-                },
-                {
-                    "code": "control_data",
-                    "value": ""
-                },
-                {
-                    "code": "rhythm_mode",
-                    "value": "AAAAAAA="
-                },
-                {
-                    "code": "sleep_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "wakeup_mode",
-                    "value": "AAA="
-                },
-                {
-                    "code": "remote_switch",
-                    "value": true
-                },
-                {
-                    "code": "random_timing",
-                    "value": "AAAA"
-                }
-            ],
-            "sub": false,
-            "time_zone": "-05:00",
-            "uid": "az1706890258988MU2Hy",
-            "update_time": 1708240164,
-            "uuid": "e418b9653254bbfa"
         }
     ],
     "success": true,
-    "t": 1708287175818,
-    "tid": "1a549474ce9a11eea1f20ed40d2f8029",
+    "t": 1710898391774,
+    "tid": "d0561fd4e65911eeb52e32f782be8fa5",
     "file": {
         "name": "tuya-raw.json",
         "description": "Full raw list of Tuya devices.",
         "account": "9jtxgyvr7sewe5jfshsp",
-        "date": "2024-02-18T15:12:56.017523",
+        "date": "2024-03-19T21:33:11.995216",
         "tinytuya": "1.13.1"
     }
 }
