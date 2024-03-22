@@ -47,6 +47,7 @@ def main():
     current_brighness_status = None
     while True:
         status = switch.status()
+        print(status)
         for bulb in devices["bulbs"]:
             time0 = time.time()
             print(bulb.status())
@@ -64,14 +65,16 @@ def main():
         if status["dps"]['1'] == True and devices["bulbs"][0].status()["dps"]['20'] == False and current_on_off_status != True:
             print("Switch is on")
             current_on_off_status = True
-            print(devices["bulbs"][0].status()["dps"]['20'])
+            #print(devices["bulbs"][0].status()["dps"]['20'])
             for bulb in devices["bulbs"]:
                 bulb.turn_on(nowait=True)
         if status['dps']['2'] != current_brighness_status and current_on_off_status == True:
             print("Brightness has changed")
             current_brighness_status = status['dps']['2']
+            # Depending on the current brightness we 
+
             for bulb in devices["bulbs"]:
-                bulb.set_brightness(current_brighness_status, nowait=True)
+                bulb.set_brightness_percentage(current_brighness_status, nowait=True)
 
 
 if __name__ == "__main__":
