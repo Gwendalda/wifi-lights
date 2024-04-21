@@ -4,8 +4,7 @@ import json
 import pprint
 import os
 
-SNAPSHOT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))+ "/snapshot.json"
-
+SNAPSHOT_PATH = "/home/gwendal/wifi-lights/snapshot.json"
 
 def get_all_devices() -> dict:
 
@@ -47,10 +46,8 @@ def main():
     current_brighness_status = None
     while True:
         status = switch.status()
-        print(status)
         for bulb in devices["bulbs"]:
             time0 = time.time()
-            print(bulb.status())
             if time.time() - time0 > 5:
                 print("Timeout")
                 tinytuya.scan()
