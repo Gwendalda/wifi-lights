@@ -1,0 +1,451 @@
+{
+    "timestamp": 1713734784.152212,
+    "devices": [
+        {
+            "id": "eba2fad7eb010147fcczav",
+            "ip": "10.0.0.63",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 5",
+            "key": "3(l-E/?j[2t&.pIS",
+            "mac": "50:8a:06:68:fd:cf",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "0019031b02a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "eb660c91626a26734eyvvo",
+            "ip": "10.0.0.72",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "0x1",
+            "key": "hZ=]'Wi::)dcQvAr",
+            "mac": "50:8a:06:66:c4:39",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "0024035b02a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "eb24b4a22ddd0b1de9rzzb",
+            "ip": "10.0.0.19",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 19",
+            "key": "84sdJqOF#5Wl-C~E",
+            "mac": "50:8a:06:2d:7f:64",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "001b031502a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "eba125c8f6d40f6612o373",
+            "ip": "10.0.0.86",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 8",
+            "key": "[+lC`xh+-<orrjy{",
+            "mac": "50:8a:06:2d:1b:03",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "0023030102a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "ebb473cb97c1ff4c2dml12",
+            "ip": "10.0.0.145",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "0x1 RGB-bulb",
+            "key": "gb}VP@**F8[+0WQz",
+            "mac": "50:8a:06:65:b2:e5",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "001a036202a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "eb9252dc4a9c815baalirj",
+            "ip": "10.0.0.127",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 4",
+            "key": "D~#?#*}{MQU#dD0f",
+            "mac": "50:8a:06:67:23:2a",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "002102ef02a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "eb878a3c9c8afa4a88i5pg",
+            "ip": "10.0.0.29",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 7",
+            "key": "AuEXPL+$AN^_;Rt=",
+            "mac": "50:8a:06:68:9c:18",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "001c034502a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "ebfcbbcc4eadce9069teir",
+            "ip": "10.0.0.179",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 13",
+            "key": "V:'?!8rpg2k_(@n*",
+            "mac": "50:8a:06:68:de:00",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "001102f102a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "ebdd27d3a3c2348ee5lyqq",
+            "ip": "10.0.0.203",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 11",
+            "key": "@a+`'4k%Et0bZAAl",
+            "mac": "50:8a:06:69:07:bc",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "001e032c02a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "ebb2c49e4cc29e5b39pwzl",
+            "ip": "10.0.0.67",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 6",
+            "key": "9J9q_PzVIYe{&&sr",
+            "mac": "50:8a:06:2d:1b:ec",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "0012036202a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "ebf02e4166bf6ebd86ebok",
+            "ip": "10.0.0.223",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 20",
+            "key": "!ot:7I260ZBToZDc",
+            "mac": "50:8a:06:57:6a:49",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "001a030102a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "eb5d3aa1565842d64akeqt",
+            "ip": "10.0.0.142",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "0x0",
+            "key": "<[}iTosF@Rv/#rZ=",
+            "mac": "50:8a:06:69:07:7e",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "0018032302a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "eb7fe4b5a8bebc88138avl",
+            "ip": "10.0.0.180",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 21",
+            "key": "Ocsz|hz;cS0Hy:)t",
+            "mac": "50:8a:06:68:a7:3e",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 698,
+                    "23": 140,
+                    "24": "001d034702a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "ebb73b92e64ea7afd1omef",
+            "ip": "10.0.0.244",
+            "active": 2,
+            "encrypt": true,
+            "productKey": "key3qwddp35ffhu9",
+            "name": "60W Tune + Color 9",
+            "key": "DQdP0KwUjhlikdE2",
+            "mac": "50:8a:06:56:32:aa",
+            "ability": 0,
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "dps": {
+                    "20": true,
+                    "21": "colour",
+                    "22": 255,
+                    "23": 300,
+                    "24": "0013031b02a1",
+                    "25": "0132320203e8012c025800000000",
+                    "26": 0,
+                    "41": true
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        },
+        {
+            "id": "34333564c45bbe671aa6",
+            "ip": "10.0.0.146",
+            "active": 2,
+            "ability": 0,
+            "mode": 0,
+            "encrypt": true,
+            "productKey": "pmmqpajul0mb3dkk",
+            "name": "Light switch",
+            "key": "9:=5cd);g3r8Tkx&",
+            "mac": "c4:5b:be:67:1a:a6",
+            "token": "",
+            "wf_cfg": "",
+            "dev_type": "default",
+            "err": "",
+            "type": "default",
+            "dps": {
+                "devId": "34333564c45bbe671aa6",
+                "dps": {
+                    "1": true,
+                    "2": 255
+                }
+            },
+            "origin": "broadcast",
+            "ver": "3.3"
+        }
+    ]
+}
