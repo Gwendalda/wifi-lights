@@ -3,8 +3,8 @@ Description=WiFi Lights Service
 After=network.target
 
 [Service]
-User=$(USER)
-WorkingDirectory=$(WORKING_DIR)
+User=gwendal
+WorkingDirectory=/home/gwendal/wifi-lights
 ExecStart=/usr/bin/python3 $(PYTHON_SCRIPT)
 Restart=on-failure
 RestartSec=5
