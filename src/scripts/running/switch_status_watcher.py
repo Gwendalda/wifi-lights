@@ -18,8 +18,11 @@ def get_all_devices() -> dict:
     for device in data:
         if device["ip"] == "":
             continue
-        if device["err"]:
-            continue
+        try:
+            if device["err"]:
+                continue
+        except KeyError as e:
+            pass
         if "1" not in device["dps"]["dps"]:
             device_instantiation = tinytuya.BulbDevice(device["id"], device["ip"], device["key"])
             device_instantiation.set_version(3.3)
