@@ -5,11 +5,11 @@ After=network.target
 [Service]
 User=gwendal
 WorkingDirectory=/home/gwendal/wifi-lights
-ExecStart=/usr/bin/python3 $(PYTHON_SCRIPT)
+ExecStart=/usr/bin/python3 /home/gwendal/wifi-lights/src/scripts/running/switch_status_watcher.py
 Restart=on-failure
 RestartSec=5
-ExecStartPre=/usr/bin/python3 -m pip install -r $(WORKING_DIR)/requirements.txt
-ExecStartPost=/usr/bin/bash -c "[[ \$$? -ne 0 ]] && $(SCAN_COMMAND) && sudo systemctl restart $(SERVICE_NAME)"
+ExecStartPre=/usr/bin/python3 -m pip install -r /home/gwendal/wifi-lights/requirements.txt
+ExecStartPost=/usr/bin/bash -c "[[ \$$? -ne 0 ]] && python3 -m tinytuya scan && sudo systemctl restart wifi-lights.service"
 
 [Install]
 WantedBy=multi-user.target
