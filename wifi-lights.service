@@ -8,7 +8,7 @@ WorkingDirectory=/home/gwendal/wifi-lights
 ExecStart=/home/gwendal/venv/bin/python3 /home/gwendal/wifi-lights/src/scripts/running/switch_status_watcher.py
 Restart=on-failure
 RestartSec=5
-ExecStartPost=/home/gwendal/wifi-lights/venv/bin/python3 -m tinytuya scan
+ExecStartPost=cd /home/gwendal/wifi-lights ; /home/gwendal/wifi-lights/venv/bin/python3 -m tinytuya scan
 
 [Install]
 WantedBy=multi-user.target
