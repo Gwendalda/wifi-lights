@@ -7,7 +7,13 @@ SCAN_COMMAND="python3 -m tinytuya scan"
 
 all: install
 
-install: create-service enable-service
+install: install-dependencies create-service enable-service 
+
+install-dependencies:
+	@echo "installing dependencies..."
+	@python3 -m venv /home/gwendal/wifi-lights/venv
+	@source /home/gwendal/wifi-lights/venv/bin/activate
+	@pip install -r /home/gwendal/wifi-lights/requirements.txt
 
 create-service:
 	@echo "Creating systemd service file..."
