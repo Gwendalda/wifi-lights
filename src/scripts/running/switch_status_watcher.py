@@ -16,22 +16,22 @@ def get_all_devices() -> dict:
         "switches": []
     }
     for device in data:
-        if device["ip"] == "":
-            continue
         try:
+            if device["ip"] == "":
+                continue
             if device["err"]:
                 continue
+            
+            if "1" not in device["dps"]["dps"]:
+                device_instantiation = tinytuya.BulbDevice(device["id"], device["ip"], device["key"])
+                device_instantiation.set_version(3.3)
+                devices["bulbs"].append(device_instantiation)
+            if "1" in device["dps"]['dps']:
+                device_instantiation = tinytuya.OutletDevice(device["id"], device["ip"], device["key"])
+                device_instantiation.set_version(3.3)
+                devices["switches"].append(device_instantiation)
         except KeyError as e:
             pass
-        if "1" not in device["dps"]["dps"]:
-            device_instantiation = tinytuya.BulbDevice(device["id"], device["ip"], device["key"])
-            device_instantiation.set_version(3.3)
-            devices["bulbs"].append(device_instantiation)
-        if "1" in device["dps"]['dps']:
-            device_instantiation = tinytuya.OutletDevice(device["id"], device["ip"], device["key"])
-            device_instantiation.set_version(3.3)
-            devices["switches"].append(device_instantiation)
-        
     return devices
 
 
