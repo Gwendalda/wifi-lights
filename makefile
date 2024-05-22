@@ -11,7 +11,7 @@ install: create-service enable-service
 
 create-service:
 	@echo "Creating systemd service file..."
-	@cp $(WORKING_DIR)/wifi-lights.service $(SERVICE_FILE)
+	@sudo cp $(WORKING_DIR)/wifi-lights.service $(SERVICE_FILE)
 	@sudo systemctl daemon-reload
 	@echo "Service file created at $(SERVICE_FILE)"
 
