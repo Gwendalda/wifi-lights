@@ -1,5 +1,3 @@
-
-WIFI_LIGHTS_DIR := ~/wifi-lights
 SERVICE_NAME=wifi-lights.service
 SERVICE_FILE=/etc/systemd/system/$(SERVICE_NAME)
 PYTHON_SCRIPT=$(HOME)/wifi-lights/src/scripts/running/switch_status_watcher.py
