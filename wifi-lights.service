@@ -8,8 +8,8 @@ WorkingDirectory=/home/gwendal/wifi-lights
 ExecStart=/home/gwendal/venv/bin/python3 /home/gwendal/wifi-lights/src/scripts/running/switch_status_watcher.py
 Restart=on-failure
 RestartSec=5
-ExecStartPre=/home/gwendal/wifi-lights/venv/bin/python3 -m pip install -r /home/gwendal/wifi-lights/requirements.txt
-ExecStartPost=/usr/bin/bash -c "[[ \$$? -ne 0 ]] && /home/gwendal/wifi-lights/venv/bin/python3 -m tinytuya scan && sudo systemctl restart wifi-lights.service"
+ExecStartPre=python3 -m venv /home/gwendal/wifi-lights/venv && pip install -r /home/gwendal/wifi-lights/requirements.txt
+ExecStartPost=/usr/bin/bash -c "[[ \$$? -ne 0 ]] && python3 -m tinytuya scan && sudo systemctl restart wifi-lights.service"
 
 [Install]
 WantedBy=multi-user.target
