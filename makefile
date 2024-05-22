@@ -1,8 +1,9 @@
+WORKING_DIR=$(HOME)/wifi-lights
 SERVICE_NAME=wifi-lights.service
 SERVICE_FILE=/etc/systemd/system/$(SERVICE_NAME)
-PYTHON_SCRIPT=./src/scripts/running/switch_status_watcher.py
+PYTHON_SCRIPT=$(WORKING_DIR)/src/scripts/running/switch_status_watcher.py
 SCAN_COMMAND="python3 -m tinytuya scan"
-WORKING_DIR=$(HOME)/wifi-lights
+
 
 all: install
 
@@ -10,7 +11,7 @@ install: create-service enable-service
 
 create-service:
 	@echo "Creating systemd service file..."
-	@cp $(WORKING_DIR)/wifi-lights.service ./etc/systemd/system/wifi-lights.service
+	@cp $(WORKING_DIR)/wifi-lights.service $(SERVICE_FILE)
 	@sudo systemctl daemon-reload
 	@echo "Service file created at $(SERVICE_FILE)"
 
