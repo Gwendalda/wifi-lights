@@ -11,22 +11,22 @@ install: create-service enable-service
 create-service:
 	@echo "Creating systemd service file..."
 	@sudo tee $(SERVICE_FILE) > /dev/null << EOF
-[Unit]
-Description=WiFi Lights Service
-After=network.target
+	[Unit]
+	Description=WiFi Lights Service
+	After=network.target
 
-[Service]
-User=$(USER)
-WorkingDirectory=$(WORKING_DIR)
-ExecStart=/usr/bin/python3 $(PYTHON_SCRIPT)
-Restart=on-failure
-RestartSec=5
-ExecStartPre=/usr/bin/python3 -m pip install -r $(WORKING_DIR)/requirements.txt
-ExecStartPost=/usr/bin/bash -c "[[ \$$? -ne 0 ]] && $(SCAN_COMMAND) && sudo systemctl restart $(SERVICE_NAME)"
+	[Service]
+	User=$(USER)
+	WorkingDirectory=$(WORKING_DIR)
+	ExecStart=/usr/bin/python3 $(PYTHON_SCRIPT)
+	Restart=on-failure
+	RestartSec=5
+	ExecStartPre=/usr/bin/python3 -m pip install -r $(WORKING_DIR)/requirements.txt
+	ExecStartPost=/usr/bin/bash -c "[[ \$$? -ne 0 ]] && $(SCAN_COMMAND) && sudo systemctl restart $(SERVICE_NAME)"
 
-[Install]
-WantedBy=multi-user.target
-EOF
+	[Install]
+	WantedBy=multi-user.target
+	EOF
 	@sudo systemctl daemon-reload
 	@echo "Service file created at $(SERVICE_FILE)"
 
