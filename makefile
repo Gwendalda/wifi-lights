@@ -1,4 +1,4 @@
-WORKING_DIR=$(HOME)/wifi-lights
+WORKING_DIR=/home/gwendal/wifi-lights
 SERVICE_NAME=wifi-lights.service
 SERVICE_FILE=/etc/systemd/system/$(SERVICE_NAME)
 PYTHON_SCRIPT=$(WORKING_DIR)/src/scripts/running/switch_status_watcher.py
