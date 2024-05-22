@@ -12,8 +12,7 @@ install: install-dependencies create-service enable-service
 install-dependencies:
 	@echo "installing dependencies..."
 	python3 -m venv /home/gwendal/wifi-lights/venv
-	source /home/gwendal/wifi-lights/venv/bin/activate
-	@pip install -r /home/gwendal/wifi-lights/requirements.txt
+	@/home/gwendal/wifi-lights/venv/bin/pip install -r /home/gwendal/wifi-lights/requirements.txt
 
 create-service:
 	@echo "Creating systemd service file..."
