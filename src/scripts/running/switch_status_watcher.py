@@ -82,21 +82,19 @@ def main():
         scenes = json.load(f)
     while True:
         status = switch.status()
-        if 'dps' not in status.keys() and "1" not in status["dps"].keys():
+        if 'dps' not in status.keys() or "1" not in status["dps"].keys():
             continue
         time0 = time.time()
         if status["dps"]['1'] == False and current_on_off_status != False:
             print("Switch is off")
             current_on_off_status = False
             for bulb in devices["bulbs"]:
-                print(bulb)
                 bulb.turn_off()
         if status["dps"]['1'] == True and current_on_off_status != True:
             print("Switch is on")
             current_on_off_status = True
             # print(devices["bulbs"][0].status()["dps"]['20'])
             for bulb in devices["bulbs"]:
-                print(bulb)
                 print(bulb.turn_on())
 
         if status['dps']['2'] != current_brighness_status:
