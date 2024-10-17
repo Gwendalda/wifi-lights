@@ -1,0 +1,366 @@
+[
+    {
+        "id": 1,
+        "ip" : "10.0.0.20",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 2,
+        "ip" : "10.0.0.21",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 3,
+        "ip" : "10.0.0.22",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 4,
+        "ip" : "10.0.0.23",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 5,
+        "ip" : "10.0.0.24",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 6,
+        "ip" : "10.0.0.25",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 7,
+        "ip" : "10.0.0.26",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 8,
+        "ip" : "10.0.0.27",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 9,
+        "ip" : "10.0.0.28",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 10,
+        "ip" : "10.0.0.29",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 11,
+        "ip" : "10.0.0.30",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 12,
+        "ip" : "10.0.0.31",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 13,
+        "ip" : "10.0.0.32",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    },
+    {
+        "id": 14,
+        "ip" : "10.0.0.33",
+        "pins": {
+            "7": {
+                "type": "PWM",
+                "channel": 4
+            },
+            "8": {
+                "type": "PWM",
+                "channel": 5
+            },
+            "9": {
+                "type": "PWM",
+                "channel": 2
+            },
+            "24": {
+                "type": "PWM",
+                "channel": 1
+            },
+            "26": {
+                "type": "PWM",
+                "channel": 3
+            }
+        }
+    }
+]
