@@ -8,12 +8,11 @@ from src.core.devices import *
 from flask import request, jsonify
 
 # Flask app route to handle incoming data from the ESP32
-@app.route('/', methods=['POST'])
-def handle_button():
+@app.route('/update', methods=['GET'])
+def update():
     try:
-        data = request.get_json()
-        pin = data.get("pin")
-        state = data.get("state")
+        pin = request.args.get("pin")
+        state = request.args.get("state")
 
         if pin is None or state is None:
             return jsonify({"error": "Invalid data received"}), 400
@@ -22,18 +21,14 @@ def handle_button():
         print(f"Button pressed on pin {pin}, state: {state}")
         print(f"Getting devices")
         devices = BulbDevice.get_devices()
-        print(f"Devices: {devices}")
-        if pin == 27: 
-            if state == 1:
-                BulbDevice.turn_on_all_devices()
-            else:
-                BulbDevice.turn_off_all_devices()
+        if state == "1":
+            BulbDevice.turn_on_all_devices()
+        else:
+            print("turning off")
+            BulbDevice.turn_off_all_devices()
         return jsonify({"message": "Button press processed"}), 200
 
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({"error": "Failed to process button press"}), 500
 
-# Run the Flask server (assuming Flask is being used as part of app.server.server)
-if __name__ == '__main__':
-    app.run(host='10.0.0.43', port=5000)

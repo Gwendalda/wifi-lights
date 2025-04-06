@@ -3,4 +3,4 @@ from src.server.server import app
 
 
 if __name__ == '__main__':
-    app.run(host='10.0.0.43', port=5000)
+    app.run(host='10.0.0.195', port=5000)

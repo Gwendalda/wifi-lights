@@ -42,7 +42,7 @@ class BulbDevice:
     
     @staticmethod
     def get_devices():
-        with open("/home/gwendalda/wifi-lights/devices.json", "r") as file:
+        with open("/home/gwendal/wifi-lights/devices.json", "r") as file:
             devices = json.load(file)
             device_objects = []
             for device in devices:
@@ -51,18 +51,18 @@ class BulbDevice:
         return device_objects
 
     def save(self):
-        with open("/home/gwendalda/wifi-lights/devices.json", "r") as file:
+        with open("/home/gwendal/wifi-lights/devices.json", "r") as file:
             devices = json.load(file)
             for device in devices:
                 if device["id"] == self.id:
                     device["last_status"] = self.last_status
                     break
-        with open("/home/gwendalda/wifi-lights/devices.json", "w") as file:
+        with open("/home/gwendal/wifi-lights/devices.json", "w") as file:
             json.dump(devices, file)
 
     @staticmethod
     def save_devices(devices):
-        with open("/home/gwendalda/wifi-lights/devices.json", "w") as file:
+        with open("/home/gwendal/wifi-lights/devices.json", "w") as file:
             device_data = []
             for device in devices:
                 device_data.append({"id": device.id, "ip": device.ip, "last_status": device.last_status})

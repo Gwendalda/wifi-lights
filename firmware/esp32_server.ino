@@ -12,8 +12,8 @@ IPAddress subnet(255, 255, 255, 0);
 WebServer server(80);
 WiFiClient client;
 
-const char* serverHost = "10.0.0.40";  // WiFi-Lights server IP address
-const int serverPort = 5001;            // Port for WiFi-Lights server
+const char* serverHost = "10.0.0.195";  // WiFi-Lights server IP address
+const int serverPort = 5000;            // Port for WiFi-Lights server
 
 int previousPinStates[10]; // Assuming pin numbers from 0-9 for monitoring state changes
 
