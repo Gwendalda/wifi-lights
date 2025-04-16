@@ -1,0 +1,1 @@
+addEventHandler OnChannelChange 12 exec color_fade.bat;

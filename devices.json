@@ -25,12 +25,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "2",
@@ -58,12 +66,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "3",
@@ -91,12 +107,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "4",
@@ -124,12 +148,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "5",
@@ -157,12 +189,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "6",
@@ -190,12 +230,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "7",
@@ -223,12 +271,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "8",
@@ -256,12 +312,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "9",
@@ -289,12 +353,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "10",
@@ -322,12 +394,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "11",
@@ -355,12 +435,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "12",
@@ -388,12 +476,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "13",
@@ -421,12 +517,20 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   },
   {
     "id": "14",
@@ -454,11 +558,19 @@
       }
     },
     "last_status": {
-      "brightness": 50,
-      "red": 70,
-      "green": 0,
-      "blue": 0,
-      "temperature": 30
-    }
+      "brightness": 98,
+      "red": 234,
+      "green": 34,
+      "blue": 34,
+      "temperature": 30,
+      "power": "ON",
+      "Dimmer": 98,
+      "CT": 154,
+      "color": "ea2222",
+      "Fade": "OFF",
+      "Speed": 1,
+      "HSBColor": "0,85,96"
+    },
+    "activeAnimations": []
   }
 ]
