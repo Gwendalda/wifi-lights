@@ -1,8 +1,40 @@
 import * as React from "react";
 
-import { IconSvgProps } from "@/types";
+export interface IconProps extends React.SVGProps<SVGSVGElement> {
+  size?: number;
+  width?: number;
+  height?: number;
+}
 
-export const Logo: React.FC<IconSvgProps> = ({
+const createIcon = (
+  path: string,
+  viewBox: string = "0 0 24 24",
+  additionalProps?: Partial<IconProps>
+) => {
+  const Icon: React.FC<IconProps> = ({
+    size = 24,
+    width,
+    height,
+    ...props
+  }) => (
+    <svg
+      aria-hidden="true"
+      fill="currentColor"
+      focusable="false"
+      height={size || height}
+      role="presentation"
+      viewBox={viewBox}
+      width={size || width}
+      {...props}
+    >
+      <path d={path} />
+    </svg>
+  );
+
+  return Icon;
+};
+
+export const Logo: React.FC<IconProps> = ({
   size = 36,
   width,
   height,
@@ -24,7 +56,7 @@ export const Logo: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const DiscordIcon: React.FC<IconSvgProps> = ({
+export const DiscordIcon: React.FC<IconProps> = ({
   size = 24,
   width,
   height,
@@ -45,7 +77,7 @@ export const DiscordIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const TwitterIcon: React.FC<IconSvgProps> = ({
+export const TwitterIcon: React.FC<IconProps> = ({
   size = 24,
   width,
   height,
@@ -66,7 +98,7 @@ export const TwitterIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const GithubIcon: React.FC<IconSvgProps> = ({
+export const GithubIcon: React.FC<IconProps> = ({
   size = 24,
   width,
   height,
@@ -89,36 +121,19 @@ export const GithubIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const MoonFilledIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}: IconSvgProps) => (
-  <svg
-    aria-hidden="true"
-    focusable="false"
-    height={size || height}
-    role="presentation"
-    viewBox="0 0 24 24"
-    width={size || width}
-    {...props}
-  >
-    <path
-      d="M21.53 15.93c-.16-.27-.61-.69-1.73-.49a8.46 8.46 0 01-1.88.13 8.409 8.409 0 01-5.91-2.82 8.068 8.068 0 01-1.44-8.66c.44-1.01.13-1.54-.09-1.76s-.77-.55-1.83-.11a10.318 10.318 0 00-6.32 10.21 10.475 10.475 0 007.04 8.99 10 10 0 002.89.55c.16.01.32.02.48.02a10.5 10.5 0 008.47-4.27c.67-.93.49-1.519.32-1.79z"
-      fill="currentColor"
-    />
-  </svg>
+export const MoonFilledIcon = createIcon(
+  "M21.53 15.93c-.16-.27-.61-.69-1.73-.49a8.46 8.46 0 01-1.88.13 8.409 8.409 0 01-5.91-2.82 8.068 8.068 0 01-1.44-8.66c.44-1.01.13-1.54-.09-1.76s-.77-.55-1.83-.11a10.318 10.318 0 00-6.32 10.21 10.475 10.475 0 007.04 8.99 10 10 0 002.89.55c.16.01.32.02.48.02a10.5 10.5 0 008.47-4.27c.67-.93.49-1.519.32-1.79z"
 );
 
-export const SunFilledIcon = ({
+export const SunFilledIcon: React.FC<IconProps> = ({
   size = 24,
   width,
   height,
   ...props
-}: IconSvgProps) => (
+}) => (
   <svg
     aria-hidden="true"
+    fill="currentColor"
     focusable="false"
     height={size || height}
     role="presentation"
@@ -133,12 +148,12 @@ export const SunFilledIcon = ({
   </svg>
 );
 
-export const HeartFilledIcon = ({
+export const HeartFilledIcon: React.FC<IconProps> = ({
   size = 24,
   width,
   height,
   ...props
-}: IconSvgProps) => (
+}) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -158,53 +173,53 @@ export const HeartFilledIcon = ({
   </svg>
 );
 
-export const SearchIcon = (props: IconSvgProps) => (
+export const SearchIcon = createIcon(
+  "M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21ZM22 22L20 20",
+  "0 0 24 24"
+);
+
+export const SettingsIcon = createIcon(
+  "m301.9,501h-91.7c-11.3,0-20.4-9.1-20.4-20.4v-34.7c-7.2-2.5-14.2-5.4-21.1-8.8l-24.6,24.6c-8,8-20.9,8-28.9,0l-64.8-64.8c-8-8-8-20.9 0-28.9l24.6-24.6c-3.3-6.9-6.3-13.9-8.8-21.1h-34.8c-11.3,0-20.4-9.1-20.4-20.4v-91.7c0-11.3 9.1-20.4 20.4-20.4h34.7c2.5-7.2 5.4-14.2 8.8-21.1l-24.5-24.7c-8-8-8-20.9 0-28.9l64.8-64.8c8-8 20.9-8 28.9,0l24.6,24.6c6.9-3.3 13.9-6.3 21.1-8.8v-34.7c0-11.3 9.1-20.4 20.4-20.4h91.7c11.3,0 20.4,9.1 20.4,20.4v34.7c7.2,2.5 14.2,5.4 21.1,8.8l24.6-24.5c8-8 20.9-8 28.9,0l64.8,64.8c3.8,3.8 6,9 6,14.4 0,5.4-2.2,10.6-6,14.4l-24.6,24.6c3.3,6.9 6.3,13.9 8.8,21.1h34.7c11.3,0 20.4,9.1 20.4,20.4v91.7c0,11.3-9.1,20.4-20.4,20.4h-34.7c-2.5,7.2-5.4,14.2-8.8,21.1l24.6,24.6c3.8,3.8 6,9 6,14.4 0,5.4-2.2,10.6-6,14.4l-64.8,64.8c-8,8-20.9,8-28.9,0l-24.6-24.6c-6.9,3.3-13.9,6.3-21.1,8.8v34.7c5.68434e-14,11.5-9.2,20.6-20.4,20.6zm-71.3-40.8h50.8v-29.4c0-9.3 6.3-17.4 15.3-19.8 14-3.7 27.5-9.3 40.1-16.7 8-4.7 18.2-3.4 24.7,3.2l20.8,20.8 35.9-35.9-20.8-20.8c-6.6-6.6-7.9-16.7-3.2-24.8 7.4-12.6 13-26.1 16.7-40.1 2.3-9 10.5-15.2 19.7-15.2h29.4v-50.8h-29.4c-9.3,0-17.4-6.3-19.7-15.2-3.7-14-9.3-27.5-16.7-40.1-4.7-8-3.4-18.2 3.2-24.7l20.8-20.8-35.9-35.9-20.8,20.8c-6.6,6.6-16.7,7.9-24.7,3.2-12.6-7.4-26.1-13-40.1-16.7-9-2.4-15.3-10.5-15.3-19.8v-29.7h-50.8v29.4c0,9.3-6.3,17.4-15.3,19.8-14,3.7-27.5,9.3-40.1,16.7-8,4.7-18.2,3.4-24.7-3.2l-20.8-20.8-35.9,35.9 20.8,20.8c6.6,6.6 7.9,16.7 3.2,24.7-7.4,12.6-13,26.1-16.7,40.1-2.4,9-10.5,15.3-19.8,15.3h-29.4v50.8h29.4c9.3,0 17.4,6.3 19.8,15.3 3.7,14 9.3,27.5 16.7,40.1 4.7,8 3.4,18.2-3.2,24.7l-20.8,20.8 35.9,35.9 20.8-20.8c6.6-6.6 16.8-7.9 24.7-3.2 12.6,7.4 26.1,13 40.1,16.7 9,2.4 15.3,10.5 15.3,19.8v29.6z",
+  "0 0 512 512"
+);
+
+export const MenuIcon: React.FC<IconProps> = (props) => (
   <svg
     aria-hidden="true"
     fill="none"
     focusable="false"
     height="1em"
     role="presentation"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
     viewBox="0 0 24 24"
     width="1em"
     {...props}
   >
-    <path
-      d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-    />
-    <path
-      d="M22 22L20 20"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-    />
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
   </svg>
 );
 
-export const SettingsIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}: IconSvgProps) => (
+export const XIcon: React.FC<IconProps> = (props) => (
   <svg
     aria-hidden="true"
-    fill="currentColor"
+    fill="none"
     focusable="false"
-    height={size || height}
+    height="1em"
     role="presentation"
-    viewBox="0 0 512 512"
-    width={size || width}
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+    width="1em"
     {...props}
   >
-    <g>
-      <path d="m301.9,501h-91.7c-11.3,0-20.4-9.1-20.4-20.4v-34.7c-7.2-2.5-14.2-5.4-21.1-8.8l-24.6,24.6c-8,8-20.9,8-28.9,0l-64.8-64.8c-8-8-8-20.9 0-28.9l24.6-24.6c-3.3-6.9-6.3-13.9-8.8-21.1h-34.8c-11.3,0-20.4-9.1-20.4-20.4v-91.7c0-11.3 9.1-20.4 20.4-20.4h34.7c2.5-7.2 5.4-14.2 8.8-21.1l-24.5-24.7c-8-8-8-20.9 0-28.9l64.8-64.8c8-8 20.9-8 28.9,0l24.6,24.6c6.9-3.3 13.9-6.3 21.1-8.8v-34.7c0-11.3 9.1-20.4 20.4-20.4h91.7c11.3,0 20.4,9.1 20.4,20.4v34.7c7.2,2.5 14.2,5.4 21.1,8.8l24.6-24.5c8-8 20.9-8 28.9,0l64.8,64.8c3.8,3.8 6,9 6,14.4 0,5.4-2.2,10.6-6,14.4l-24.6,24.6c3.3,6.9 6.3,13.9 8.8,21.1h34.7c11.3,0 20.4,9.1 20.4,20.4v91.7c0,11.3-9.1,20.4-20.4,20.4h-34.7c-2.5,7.2-5.4,14.2-8.8,21.1l24.6,24.6c3.8,3.8 6,9 6,14.4 0,5.4-2.2,10.6-6,14.4l-64.8,64.8c-8,8-20.9,8-28.9,0l-24.6-24.6c-6.9,3.3-13.9,6.3-21.1,8.8v34.7c5.68434e-14,11.5-9.2,20.6-20.4,20.6zm-71.3-40.8h50.8v-29.4c0-9.3 6.3-17.4 15.3-19.8 14-3.7 27.5-9.3 40.1-16.7 8-4.7 18.2-3.4 24.7,3.2l20.8,20.8 35.9-35.9-20.8-20.8c-6.6-6.6-7.9-16.7-3.2-24.8 7.4-12.6 13-26.1 16.7-40.1 2.3-9 10.5-15.2 19.7-15.2h29.4v-50.8h-29.4c-9.3,0-17.4-6.3-19.7-15.2-3.7-14-9.3-27.5-16.7-40.1-4.7-8-3.4-18.2 3.2-24.7l20.8-20.8-35.9-35.9-20.8,20.8c-6.6,6.6-16.7,7.9-24.7,3.2-12.6-7.4-26.1-13-40.1-16.7-9-2.4-15.3-10.5-15.3-19.8v-29.7h-50.8v29.4c0,9.3-6.3,17.4-15.3,19.8-14,3.7-27.5,9.3-40.1,16.7-8,4.7-18.2,3.4-24.7-3.2l-20.8-20.8-35.9,35.9 20.8,20.8c6.6,6.6 7.9,16.7 3.2,24.7-7.4,12.6-13,26.1-16.7,40.1-2.4,9-10.5,15.3-19.8,15.3h-29.4v50.8h29.4c9.3,0 17.4,6.3 19.8,15.3 3.7,14 9.3,27.5 16.7,40.1 4.7,8 3.4,18.2-3.2,24.7l-20.8,20.8 35.9,35.9 20.8-20.8c6.6-6.6 16.8-7.9 24.7-3.2 12.6,7.4 26.1,13 40.1,16.7 9,2.4 15.3,10.5 15.3,19.8v29.6z" />
-      <path d="m256,376.2c-66.3,0-120.2-53.9-120.2-120.2s53.9-120.2 120.2-120.2 120.3,53.9 120.3,120.2-54,120.2-120.3,120.2zm0-199.6c-43.8,0-79.4,35.6-79.4,79.4s35.6,79.4 79.4,79.4c43.8,0 79.4-35.6 79.4-79.4s-35.6-79.4-79.4-79.4z" />
-    </g>
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
   </svg>
 );

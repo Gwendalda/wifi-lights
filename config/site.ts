@@ -1,6 +1,24 @@
-export type SiteConfig = typeof siteConfig;
+export type NavItem = {
+  label: string;
+  href: string;
+  disabled?: boolean;
+};
 
-export const siteConfig = {
+export type SiteConfig = {
+  name: string;
+  description: string;
+  navItems: NavItem[];
+  navMenuItems: NavItem[];
+  links: {
+    github: string;
+    twitter: string;
+    docs: string;
+    discord: string;
+    sponsor: string;
+  };
+};
+
+export const siteConfig: SiteConfig = {
   name: "WiFi Lights",
   description: "Make beautiful websites regardless of your design experience.",
   navItems: [],

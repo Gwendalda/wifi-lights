@@ -1,18 +1,11 @@
+/* eslint-disable */
 "use client"; // Required for hooks like useState, useEffect and event handlers
 
 import { useState, useEffect, useRef } from "react";
-import { Button } from "@heroui/button";
-import { Card, CardHeader, CardBody } from "@heroui/card";
-import { Listbox, ListboxItem } from "@heroui/listbox";
-import { Snippet } from "@heroui/snippet";
-import { Spinner } from "@heroui/spinner";
 import { Selection } from "@react-types/shared"; // Import Selection type if available, or use 'any'
-import { Tabs, Tab } from "@heroui/tabs"; // Import Tabs component
-import { Slider } from "@heroui/slider"; // Import Slider component
-import { Switch } from "@heroui/switch"; // Correct import for Switch component
-import { Accordion, AccordionItem } from "@heroui/accordion"; // Correct import path
-import { Icon } from "@iconify/react"; // Correct import path
-import { Input } from "@heroui/input"; // Import Input for file name display
+// import { Accordion, AccordionItem } from "@heroui/accordion"; // Removed
+// import { Icon } from "@iconify/react"; // To be removed
+// import { Input } from "@heroui/input"; // Removed
 
 // Use the renamed type exported from lib/lights
 import type { LightDeviceData as BulbDeviceData } from "@/lib/lights";
@@ -40,6 +33,15 @@ export default function Home() {
   const [scriptFile, setScriptFile] = useState<File | null>(null); // State for the script file
   const [scriptContent, setScriptContent] = useState<string | null>(null); // State for the script content
   const [isUploadingScript, setIsUploadingScript] = useState<boolean>(false); // Loading state for script upload
+  const [activeControlTab, setActiveControlTab] = useState<string>("brightness_temp"); // State for active tab
+  const [isEventsAccordionOpen, setIsEventsAccordionOpen] = useState<boolean>(false); // State for accordion
+
+  const controlTabs = [
+    { key: "brightness_temp", title: "Brightness & Temp" },
+    { key: "animations", title: "Animations" },
+    { key: "scripts", title: "Scripts" },
+    { key: "raw_command", title: "Raw Command" },
+  ];
 
   const fetchDeviceStatus = async () => {
     setIsLoading(true);
@@ -145,6 +147,22 @@ export default function Home() {
     if (typeof brightnessValue !== "number") return;
     setBrightnessLevel(brightnessValue); // Update UI immediately
 
+    // Update devices state immediately with new brightness
+    setDevices(currentDevices => 
+      currentDevices.map(device => {
+        if (selectedDeviceIds.size === 0 || selectedDeviceIds.has(device.id)) {
+          return {
+            ...device,
+            last_status: {
+              ...device.last_status,
+              Dimmer: brightnessValue
+            }
+          };
+        }
+        return device;
+      })
+    );
+
     // Clear existing timeout
     if (brightnessThrottleTimeoutRef.current) {
       clearTimeout(brightnessThrottleTimeoutRef.current);
@@ -156,7 +174,7 @@ export default function Home() {
       const target = targetDeviceIds ? `${targetDeviceIds.length} selected devices` : 'all devices';
       console.log(`Throttled Brightness Change: Sending ${brightnessValue}% to ${target}`);
       try {
-        const response = await fetch("/api/lights/brightness", { // New API route
+        const response = await fetch("/api/lights/brightness", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ brightness: brightnessValue, ...(targetDeviceIds && { deviceIds: targetDeviceIds }) }),
@@ -166,9 +184,13 @@ export default function Home() {
           console.error(
             `Brightness change failed: ${response.statusText} ${errorData.error ? `- ${errorData.error}` : ""}`,
           );
+          // Revert the optimistic update if the API call fails
+          fetchDeviceStatus();
         }
       } catch (err: any) {
         console.error("Error during brightness change:", err);
+        // Revert the optimistic update if the API call fails
+        fetchDeviceStatus();
       }
       brightnessThrottleTimeoutRef.current = null;
     }, BRIGHTNESS_THROTTLE_DELAY);
@@ -376,20 +398,6 @@ export default function Home() {
     return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
 
-  // Handler for selection change in Listbox
-  // Adjust the type 'Selection' based on @heroui/listbox actual implementation
-  const handleSelectionChange = (keys: Selection | "all") => {
-    if (keys === "all") {
-      // Assuming 'all' might be a value from the component
-      setSelectedDeviceIds(new Set(devices.map((d) => d.id)));
-    } else if (keys instanceof Set) {
-      // Assuming keys is Set<string> or similar
-      setSelectedDeviceIds(new Set(keys as Set<string>));
-    } else {
-      setSelectedDeviceIds(new Set()); // Fallback for unknown type
-    }
-  };
-
   // Aggregate events from state for UI display
   const aggregatedEvents = Object.entries(activeDeviceEvents)
       .filter(([, events]) => events !== null && events.length > 0)
@@ -404,21 +412,24 @@ export default function Home() {
     <div className="container mx-auto p-4 grid grid-cols-1 md:grid-cols-3 gap-6">
       {/* Left Column: Device List & Status + Active Animations */}
       <div className="md:col-span-1 space-y-6">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <h2 className="text-xl font-semibold">Devices</h2>
-          </CardHeader>
-          <CardBody>
+        <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Devices</h2>
+          </div>
+          <div className="p-4">
             {isLoading && (
               <div className="flex justify-center items-center p-4">
-                <Spinner label="Loading devices..." />
+                <div className="flex flex-col items-center">
+                  <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Loading devices...</p>
+                </div>
               </div>
             )}
             {/* Show general error here */}
             {error && !isActionLoading && (
-              <Snippet className="w-full mb-4" color="danger">
-                Error: {error}
-              </Snippet>
+              <div className="w-full mb-4 p-3 rounded-md bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700">
+                <p className="text-sm text-red-700 dark:text-red-200"><span className="font-semibold">Error:</span> {error}</p>
+              </div>
             )}
 
             {!isLoading && devices.length === 0 && !error && (
@@ -428,90 +439,115 @@ export default function Home() {
             )}
 
             {!isLoading && devices.length > 0 && (
-              <Listbox
+              <ul
                 aria-label="Select Devices"
-                className="border border-gray-700 rounded-md max-h-96 overflow-y-auto" // Add styling
-                disallowEmptySelection={false}
-                selectionMode="multiple"
-                variant="flat"
-                selectedKeys={selectedDeviceIds}
-                // @ts-ignore // Use ts-ignore if type 'Selection' causes issues, adjust based on library
-                onSelectionChange={handleSelectionChange}
+                className="border border-gray-300 dark:border-gray-700 rounded-md max-h-96 overflow-y-auto divide-y divide-gray-300 dark:divide-gray-700"
               >
                 {devices.map((device) => (
-                  <ListboxItem key={device.id} textValue={`${device.id}`}>
+                  <li
+                    key={device.id}
+                    onClick={() => {
+                      const newSelectedDeviceIds = new Set(selectedDeviceIds);
+                      if (newSelectedDeviceIds.has(device.id)) {
+                        newSelectedDeviceIds.delete(device.id);
+                      } else {
+                        newSelectedDeviceIds.add(device.id);
+                      }
+                      setSelectedDeviceIds(newSelectedDeviceIds);
+                    }}
+                    className={`p-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${selectedDeviceIds.has(device.id) ? "bg-blue-100 dark:bg-blue-800 dark:text-blue-100 ring-2 ring-blue-500" : "bg-white dark:bg-gray-800"}`}
+                    aria-selected={selectedDeviceIds.has(device.id)}
+                    role="option"
+                  >
                     <div className="flex justify-between items-center w-full">
-                      <span className="font-medium">{device.id}</span>
+                      <span className={`font-medium ${selectedDeviceIds.has(device.id) ? "text-blue-700 dark:text-blue-100" : "text-gray-900 dark:text-white"}`}>{device.id}</span>
                       {/* Status indicator based on MQTT power state */}
                       <span
-                        className={`text-xs px-2 py-0.5 rounded-full ${device.last_status?.power === "ON" ? "bg-green-600 text-white" : "bg-gray-600 text-gray-300"}`}
+                        className={`text-xs px-2 py-0.5 rounded-full ${device.last_status?.power === "ON" ? "bg-green-500 text-white" : "bg-gray-500 text-gray-300"}`}
                       >
                         {device.last_status?.power === "ON" ? "On" : "Off"}
                       </span>
                       {/* Show Dimmer % if available */}
                       {device.last_status?.power === "ON" && typeof device.last_status?.Dimmer === 'number' && (
-                        <span className="text-xs text-gray-400 ml-2">
+                        <span className={`text-xs ml-2 ${selectedDeviceIds.has(device.id) ? "text-blue-600 dark:text-blue-200" : "text-gray-400 dark:text-gray-500"}`}>
                           {device.last_status.Dimmer}%
                         </span>
                       )}
                     </div>
-                  </ListboxItem>
+                  </li>
                 ))}
-              </Listbox>
+              </ul>
             )}
-          </CardBody>
-        </Card>
+          </div>
+        </div>
 
         {/* --- Active Events Card (Restructured) --- */}
-        <Card className="shadow-lg">
-          <CardHeader className="flex justify-between items-center">
+        <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
             {/* Title on the left */}
             <div className="flex items-center">
-              <h2 className="text-xl font-semibold">Active Events ({aggregatedEvents.length})</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Active Events ({aggregatedEvents.length})</h2>
               <span className="ml-2 text-xs text-gray-500">(Live Query)</span>
             </div>
             {/* Buttons on the right */}
             <div className="flex items-center gap-1">
-              <Button
-                isIconOnly
-                size="sm"
-                variant="light"
+              <button
+                type="button"
+                className="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50"
                 aria-label="Refresh Events"
                 onClick={(e) => { e.stopPropagation(); handleFetchEvents(); }}
-                isDisabled={isLoadingEvents}
-                isLoading={isLoadingEvents}
+                disabled={isLoadingEvents}
               >
-                <Icon icon="mdi:refresh" width="16" />
-              </Button>
-              <Button
-                isIconOnly
-                size="sm"
-                variant="light"
-                color="danger"
+                {isLoadingEvents ? (
+                  <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                ) : <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" /></svg>}
+              </button>
+              <button
+                type="button"
+                className="p-1.5 rounded hover:bg-red-100 dark:hover:bg-red-700 text-red-600 dark:text-red-400 disabled:opacity-50"
                 aria-label="Clear All Events (Selected/All)"
                 onClick={(e) => { e.stopPropagation(); handleClearAllAnimations(); }}
-                isDisabled={isActionLoading}
+                disabled={isActionLoading}
                 title={`Clear all events on ${selectedDeviceIds.size > 0 ? 'selected' : 'all'} devices`}
               >
-                <Icon icon="mdi:delete-sweep-outline" width="16" />
-              </Button>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15 16h4v2h-4zm0-8h7v2h-7zm0 4h6v2h-6zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3v10zm2-8h6v8H5v-8zm5-6H6L5 2h8l-1 2z" /></svg>
+              </button>
             </div>
-          </CardHeader>
-          <CardBody className="p-0"> {/* Remove padding from CardBody */}
-            <Accordion variant="bordered" onSelectionChange={(keys) => {
-              // Fetch events when accordion opens (assuming single item)
-              if (keys instanceof Set && keys.has('active-events-list')) {
+          </div>
+          <div className="p-0">
+            {/* Replaced Accordion */}
+            <div className="border-t border-gray-200 dark:border-gray-700">
+              <h3>
+                <button
+                  type="button"
+                  className="flex items-center justify-between w-full p-4 font-medium text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
+                  onClick={() => {
+                    const newAccordionState = !isEventsAccordionOpen;
+                    setIsEventsAccordionOpen(newAccordionState);
+                    if (newAccordionState) { // Fetch events only when opening
                   handleFetchEvents();
               }
-            }}>
-              <AccordionItem
-                key="active-events-list" // Unique key for the list item
-                aria-label="Events List" // More appropriate label
-                title="View/Hide Event List" // Simple title for the trigger
-                // REMOVED: Buttons from title prop
-              >
+                  }}
+                  aria-expanded={isEventsAccordionOpen}
+                  aria-controls="active-events-content"
+                >
+                  <span>View/Hide Event List</span>
+                  {isEventsAccordionOpen ? 
+                    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6l-6 6z" /></svg>
+                    : <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z" /></svg>}
+                </button>
+              </h3>
+              {isEventsAccordionOpen && (
+                <div id="active-events-content" className="p-0">
                 {/* Content remains the same: spinner, empty message, or list */}
-                {isLoadingEvents && <Spinner size="sm" label="Loading events..." />}
+                  {isLoadingEvents && (
+                    <div className="flex justify-center items-center p-4">
+                      <div className="flex flex-col items-center">
+                        <div className="w-6 h-6 border-3 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Loading events...</p>
+                      </div>
+                    </div>
+                  )}
                 {!isLoadingEvents && aggregatedEvents.length === 0 && (
                   <p className="text-sm text-gray-500 p-4 text-center">No active repeating events found.</p>
                 )}
@@ -519,274 +555,273 @@ export default function Home() {
                   <ul className="space-y-2 p-2 max-h-60 overflow-y-auto">
                     {aggregatedEvents.map((event) => (
                       <li key={`${event.deviceId}-${event.id}`}
-                          className="flex items-center justify-between p-2 bg-gray-800 rounded text-sm"
+                            className="flex items-center justify-between p-2 bg-gray-700 dark:bg-gray-800 rounded text-sm text-white dark:text-gray-200"
                       >
                         <div className="flex flex-col">
                           <span className="font-medium">Dev: {event.deviceId} (ID: {event.id})</span>
-                          <span className="text-gray-400 text-xs">Int: {event.interval?.toFixed(3)}s Rep: {event.repeats} Cmd: {event.command}</span>
+                            <span className="text-gray-300 dark:text-gray-400 text-xs">Int: {event.interval?.toFixed(3)}s Rep: {event.repeats} Cmd: {event.command}</span>
                         </div>
-                        <Button
-                          isIconOnly
-                          size="sm"
-                          variant="light"
-                          color="danger"
+                          <button
+                            type="button"
+                            className="p-1.5 rounded hover:bg-red-500 dark:hover:bg-red-700 text-white dark:text-red-300 disabled:opacity-50"
                           aria-label="Cancel Event"
                           onClick={() => handleCancelAnimation(event.deviceId, event.id)}
-                          isDisabled={isActionLoading}
+                            disabled={isActionLoading}
                         >
-                            <Icon icon="mdi:trash-can-outline" width="16" />
-                        </Button>
+                              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 3v1H4V2h5V1h6v1h5v2h-1v15c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V4H4V2h5V1h6M7 4v15h10V4H7m2 2h2v11H9V6m4 0h2v11h-2V6z" /></svg>
+                          </button>
                       </li>
                     ))}
                   </ul>
                 )}
-              </AccordionItem>
-            </Accordion>
-          </CardBody>
-        </Card>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Center Column: Controls */}
-      <div className="md:col-span-2">
-        {/* Show action-specific error/loading here */}
+      <div className="md:col-span-2 space-y-6">
+        {/* Top Row of Cards (Controls) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Power Controls */}
+          <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                Power {targetDescription}
+              </h3>
+            </div>
+            <div className="p-4 space-y-3">
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={turnOn}
+                  disabled={isActionLoading}
+                  className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Turn On
+                </button>
+                <button
+                  type="button"
+                  onClick={turnOff}
+                  disabled={isActionLoading}
+                  className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Turn Off
+                </button>
+              </div>
+              {/* Action loading indicator for power */}
         {isActionLoading && (
-          <div className="flex justify-center items-center p-4">
-            <Spinner label="Performing action..." />
+                <div className="flex justify-center items-center pt-2">
+                  <div className="flex items-center">
+                    <div className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                    <p className="ml-2 text-sm text-gray-600 dark:text-gray-400">Processing...</p>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        )}
-        {/* Show only the action error when isActionLoading is true */}
-        {error && isActionLoading && (
-          <Snippet className="w-full mb-4" color="danger">
-            Error: {error}
-          </Snippet>
-        )}
 
-        <Tabs fullWidth aria-label="Control Modes">
-          <Tab key="color" title="Color & Brightness">
-            <div className="space-y-6 py-4">
-              {/* Unified Device Controls Card */}
-              <Card className="shadow-lg">
-                <CardHeader>
-                  <h2 className="text-xl font-semibold">Device Controls {targetDescription}</h2>
-                </CardHeader>
-                <CardBody className="space-y-4">
-                  {/* On/Off Buttons */}
-                  <div className="flex gap-4 justify-center">
-                    <Button color="primary" isDisabled={isActionLoading || devices.length === 0} isLoading={isActionLoading} onClick={turnOn}>Turn On</Button>
-                    <Button color="secondary" isDisabled={isActionLoading || devices.length === 0} isLoading={isActionLoading} onClick={turnOff}>Turn Off</Button>
-                  </div>
-                  {/* Set Color */}
-                  <div className="flex gap-4 items-center justify-center">
-                    <label className="font-medium" htmlFor="controlColorPicker">Color:</label>
-                    <input className="h-10 w-16 border border-gray-600 rounded cursor-pointer bg-gray-700 p-1" disabled={isActionLoading || devices.length === 0} id="controlColorPicker" type="color" value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)} />
-                    <Button color="warning" isDisabled={isActionLoading || devices.length === 0} isLoading={isActionLoading} onClick={setColor}>Set Color</Button>
-                  </div>
-                  {/* Standard Brightness Slider */}
-                  <div className="mt-4 border-t border-gray-700 pt-4">
-                    <Slider
-                        label="Brightness"
-                        minValue={0}
-                        maxValue={100}
-                        step={1}
-                        value={brightnessLevel}
-                        className="max-w-md mx-auto"
-                        renderValue={({ children, ...props }) => (
-                            <output {...props}>{`${brightnessLevel}%`}</output>
-                        )}
-                        onChange={handleBrightnessChange} // Trigger on drag
-                        isDisabled={isActionLoading || devices.length === 0}
-                    />
-                  </div>
-                  {selectedDeviceIds.size === 0 && devices.length > 0 && (
-                     <p className="text-center text-xs text-gray-400 mt-1">
-                       (No devices selected, controls affect all devices)
-                     </p>
-                  )}
-                </CardBody>
-              </Card>
+          {/* Color Controls */}
+          <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                Color {targetDescription}
+              </h3>
+            </div>
+            <div className="p-4 space-y-3">
+              <input
+                type="color"
+                value={selectedColor}
+                onChange={(e) => setSelectedColor(e.target.value)}
+                className="w-full h-10 p-1 border-gray-300 dark:border-gray-600 rounded-md cursor-pointer bg-white dark:bg-gray-700"
+                aria-label="Select color"
+              />
+              <button
+                type="button"
+                onClick={setColor}
+                disabled={isActionLoading}
+                className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Set Color
+              </button>
+            </div>
+          </div>
+        </div>
 
-              {/* --- Color Animation Card --- */}
-              <Card className="shadow-lg">
-                <CardHeader>
-                  <h2 className="text-xl font-semibold">Color Animation {targetDescription}</h2>
-                </CardHeader>
-                <CardBody className="space-y-4">
-                  <div className="flex gap-4 items-center justify-center">
-                    <label className="font-medium" htmlFor="animationColorPicker">Target Color:</label>
+        {/* Tabs for Brightness, Temperature, Animations etc. */}
+        <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
+          {/* Tab Headers */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <nav className="-mb-px flex space-x-4 px-4" aria-label="Tabs">
+              {controlTabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveControlTab(tab.key)}
+                  className={`whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm 
+                    ${activeControlTab === tab.key
+                      ? 'border-indigo-500 text-indigo-600 dark:border-indigo-400 dark:text-indigo-300'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:border-gray-600'}
+                  `}
+                  aria-current={activeControlTab === tab.key ? 'page' : undefined}
+                >
+                  {tab.title}
+                </button>
+              ))}
+            </nav>
+                  </div>
+
+          {/* Tab Content */}
+          <div>
+            {activeControlTab === 'brightness_temp' && (
+              <div className="p-4">
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="brightness-slider" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Brightness {targetDescription}: {brightnessLevel}%
+                    </label>
                     <input
-                      className="h-10 w-16 border border-gray-600 rounded cursor-pointer bg-gray-700 p-1"
-                      disabled={isActionLoading || devices.length === 0}
-                      id="animationColorPicker"
-                      type="color"
-                      value={selectedColor} // Reuse existing color state for now
-                      onChange={(e) => setSelectedColor(e.target.value)}
-                    />
-                  </div>
-                  {/* Animation Duration Slider */}
-                  <div className="mt-4 border-t border-gray-700 pt-4">
-                    <Slider
-                      label="Animation Duration (seconds)"
-                      minValue={1}
-                      maxValue={60} // Example max duration
+                      type="range"
+                      id="brightness-slider"
+                      aria-label="Brightness"
+                      min={0}
+                      max={100}
                       step={1}
-                      value={animationDuration} // Needs new state variable
-                      className="max-w-md mx-auto"
-                      renderValue={({ children, ...props }) => (
-                        <output {...props}>{`${animationDuration}s`}</output>
-                      )}
-                      onChange={handleAnimationDurationChange} // Needs new handler
-                      isDisabled={isActionLoading || devices.length === 0}
+                      value={brightnessLevel}
+                      onChange={(e) => handleBrightnessChange(parseInt(e.target.value))}
+                      className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer mt-1 accent-blue-600 dark:accent-blue-500"
                     />
                   </div>
-                  <Button
-                    color="success" // Or another appropriate color
-                    variant="solid"
-                    onClick={handleStartColorFade} // Needs new handler
-                    isDisabled={isActionLoading || devices.length === 0}
-                    isLoading={isActionLoading}
-                    fullWidth
+                  <div>
+                    <label htmlFor="temperature-slider" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Temperature {targetDescription}: {selectedTemperature}K
+                    </label>
+                    <input
+                      type="range"
+                      id="temperature-slider"
+                      aria-label="Temperature"
+                      min={1000}
+                      max={10000}
+                      step={100}
+                      value={selectedTemperature}
+                      onChange={(e) => handleTemperatureChange(parseInt(e.target.value))}
+                      className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer mt-1 accent-blue-600 dark:accent-blue-500"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+            {activeControlTab === 'animations' && (
+              <div className="p-4">
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="animation-color-picker" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Target Color for Fade:
+                    </label>
+                    <input
+                      type="color"
+                      id="animation-color-picker"
+                      value={selectedColor}
+                      onChange={(e) => setSelectedColor(e.target.value)}
+                      className="w-full h-10 p-1 border-gray-300 dark:border-gray-600 rounded-md mt-1 cursor-pointer bg-white dark:bg-gray-700"
+                      aria-label="Select target color for animation"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="animation-duration-slider" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Animation Duration {targetDescription}: {animationDuration}s
+                    </label>
+                    <input
+                      type="range"
+                      id="animation-duration-slider"
+                      aria-label="Animation Duration"
+                      min={1}
+                      max={60} // Example max, adjust as needed
+                      step={1}
+                      value={animationDuration}
+                      onChange={(e) => handleAnimationDurationChange(parseInt(e.target.value))}
+                      className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer mt-1 accent-purple-600 dark:accent-purple-500"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleStartColorFade}
+                    disabled={isActionLoading}
+                    className="w-full px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-md shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Start Color Fade
-                  </Button>
-                  <p className="text-center text-xs text-gray-400 mt-1">
-                    Smoothly transitions to the target color over the specified duration.
-                  </p>
-                </CardBody>
-              </Card>
-
-              {/* --- Custom Command Card (Debug) --- */}
-              <Card className="shadow-lg">
-                 <CardHeader>
-                    <h2 className="text-xl font-semibold">Custom Command {targetDescription} (Debug)</h2>
-                 </CardHeader>
-                 <CardBody className="space-y-3">
-                     {/* Use standard HTML textarea */}
-                     <label htmlFor="rawCommandInput" className="block text-sm font-medium text-gray-300 mb-1">Command String</label>
-                     <textarea
-                        id="rawCommandInput"
-                        placeholder="Enter raw command (e.g., dimmer 50, color ff0000)"
-                        value={rawCommand}
-                        onChange={(e) => setRawCommand(e.target.value)} // Standard onChange
-                        disabled={isActionLoading || devices.length === 0}
-                        rows={3} // Use rows attribute
-                        className="w-full p-2 border border-gray-600 rounded bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"
-                     />
-                     <Button
-                         color="default"
-                         variant="ghost"
-                         onClick={handleSendRawCommand}
-                         isDisabled={isActionLoading || devices.length === 0 || rawCommand.trim() === ""}
-                         isLoading={isActionLoading}
-                         fullWidth // Make button full width
-                     >
-                         Send Command
-                     </Button>
-                     <p className="text-center text-xs text-gray-400 mt-1">
-                        Sends command via HTTP POST to /api/cmnd on target devices.
-                        No validation performed. Use with caution.
-                    </p>
-                 </CardBody>
-              </Card>
-
+                  </button>
+                </div>
             </div>
-          </Tab>
-          <Tab key="temperature" title="Temperature">
-            <div className="space-y-6 py-4">
-              <Card>
-                <CardHeader>
-                  <h2 className="text-xl font-semibold">Set Temperature {targetDescription}</h2>
-                </CardHeader>
-                <CardBody>
-                  <Slider
-                    label="Temperature (Kelvin)"
-                    maxValue={6500}
-                    minValue={2000}
-                    step={50}
-                    value={selectedTemperature}
-                    className="max-w-md mx-auto"
-                    renderValue={({ children, ...props }) => (
-                      <output {...props}>{`${selectedTemperature} K`}</output>
+            )}
+            {activeControlTab === 'scripts' && (
+              <div className="p-4">
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="script-file-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Upload .bat script:
+                    </label>
+                    <input
+                      type="file"
+                      id="script-file-input"
+                      accept=".bat"
+                      onChange={handleFileChange}
+                      className="mt-1 block w-full text-sm text-gray-500 dark:text-gray-400
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-md file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-blue-100 dark:file:bg-blue-700 file:text-blue-700 dark:file:text-blue-100
+                                hover:file:bg-blue-200 dark:hover:file:bg-blue-600 cursor-pointer"
+                    />
+                    {scriptFile && <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Selected: {scriptFile.name}</p>}
+                  </div>
+                  {scriptContent && (
+                    <div className="mt-2">
+                      <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Script Preview:</p>
+                      <pre className="mt-1 p-2 text-xs bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 rounded-md max-h-40 overflow-auto">
+                        {scriptContent}
+                      </pre>
+                    </div>
                     )}
-                    onChange={handleTemperatureChange}
-                    isDisabled={isActionLoading || devices.length === 0}
-                  />
-                  <p className="text-center text-sm text-gray-400 mt-2">
-                    Adjust slider to set light temperature (2000K Warm - 6500K Cool).
-                  </p>
-                   {selectedDeviceIds.size === 0 && devices.length > 0 && (
-                     <p className="text-center text-xs text-gray-400 mt-1">
-                       (No devices selected, affects all devices)
-                     </p>
-                  )}
-                </CardBody>
-              </Card>
+                  <button
+                    type="button"
+                    onClick={handleUploadScript}
+                    disabled={isUploadingScript || !scriptFile || selectedDeviceIds.size === 0}
+                    className="w-full px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-md shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isUploadingScript ? (
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto"></div>
+                    ) : "Upload to Selected Devices"}
+                  </button>
+                </div>
             </div>
-          </Tab>
-          <Tab key="advanced" title="Advanced">
-            {/* Advanced Controls Card */}
-            <Card className="mb-4">
-              <CardHeader>
-                <h4 className="text-lg font-semibold">Advanced Controls</h4>
-              </CardHeader>
-              <CardBody className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Raw Command Section */}
-                <Card className="col-span-1 md:col-span-2">
-                  <CardHeader>Raw Tasmota Command</CardHeader>
-                  <CardBody className="flex flex-col gap-2">
-                    <Input
-                      label="Command"
-                      placeholder="e.g., Power Toggle"
+            )}
+            {activeControlTab === 'raw_command' && (
+              <div className="p-4">
+                <div className="space-y-3">
+                  <label htmlFor="rawCommandInput" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Raw Command</label>
+                  <textarea
+                    id="rawCommandInput"
+                    placeholder="Enter raw command (e.g., Dimmer 100)"
                       value={rawCommand}
                       onChange={(e) => setRawCommand(e.target.value)}
+                    rows={3}
+                    className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 dark:placeholder-gray-500"
                     />
-                    <Button
-                      color="secondary"
+                  <button
+                    type="button"
                       onClick={handleSendRawCommand}
-                      isLoading={isActionLoading}
-                      isDisabled={isActionLoading || rawCommand.trim() === ""}
-                    >
-                      Send Command to {selectedDeviceIds.size > 0 ? `${selectedDeviceIds.size} Selected` : "All"}
-                    </Button>
-                  </CardBody>
-                </Card>
-
-                {/* Custom Script Upload Section */}
-                <Card className="col-span-1 md:col-span-2">
-                  <CardHeader>Custom Script Upload (.bat)</CardHeader>
-                  <CardBody className="flex flex-col gap-3">
-                      <label className="block">
-                          <span className="sr-only">Choose script file</span>
-                          <input
-                              type="file"
-                              accept=".bat"
-                              onChange={handleFileChange}
-                              className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
-                          />
-                      </label>
-                      {scriptFile && (
-                         <Snippet hideSymbol color="default" className="text-sm">{scriptFile.name}</Snippet>
-                      )}
-                     <Button
-                       color="secondary"
-                       onClick={handleUploadScript}
-                       isLoading={isUploadingScript}
-                       isDisabled={isUploadingScript || !scriptFile || selectedDeviceIds.size === 0}
-                     >
-                       {isUploadingScript ? "Uploading..." : `Upload to ${selectedDeviceIds.size} Selected`}
-                     </Button>
-                      {isUploadingScript && <Spinner size="sm" />}
-                      {/* Display error specific to upload below the button? */}
-                  </CardBody>
-                </Card>
-
-                {/* Active Events Section */}
-                <Card className="col-span-1 md:col-span-2">
-                  {/* Existing active events content */}
-                </Card>
-              </CardBody>
-            </Card>
-          </Tab>
-        </Tabs>
+                    disabled={isActionLoading || rawCommand.trim() === ""}
+                    className="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Send Command
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

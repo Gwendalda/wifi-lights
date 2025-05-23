@@ -70,3 +70,10 @@ export function miredToKelvin(mired: number): number {
 
   return Math.round(1000000 / mired);
 }
+
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}

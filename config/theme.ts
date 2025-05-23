@@ -1,0 +1,186 @@
+export const themeConfig = {
+  colors: {
+    // Primary colors
+    primary: {
+      50: 'hsl(var(--primary-50))',
+      100: 'hsl(var(--primary-100))',
+      200: 'hsl(var(--primary-200))',
+      300: 'hsl(var(--primary-300))',
+      400: 'hsl(var(--primary-400))',
+      500: 'hsl(var(--primary-500))',
+      600: 'hsl(var(--primary-600))',
+      700: 'hsl(var(--primary-700))',
+      800: 'hsl(var(--primary-800))',
+      900: 'hsl(var(--primary-900))',
+      DEFAULT: 'hsl(var(--primary-500))',
+      foreground: 'hsl(var(--primary-foreground))',
+    },
+    // Secondary colors
+    secondary: {
+      50: 'hsl(var(--secondary-50))',
+      100: 'hsl(var(--secondary-100))',
+      200: 'hsl(var(--secondary-200))',
+      300: 'hsl(var(--secondary-300))',
+      400: 'hsl(var(--secondary-400))',
+      500: 'hsl(var(--secondary-500))',
+      600: 'hsl(var(--secondary-600))',
+      700: 'hsl(var(--secondary-700))',
+      800: 'hsl(var(--secondary-800))',
+      900: 'hsl(var(--secondary-900))',
+      DEFAULT: 'hsl(var(--secondary-500))',
+      foreground: 'hsl(var(--secondary-foreground))',
+    },
+    // Accent colors
+    accent: {
+      50: 'hsl(var(--accent-50))',
+      100: 'hsl(var(--accent-100))',
+      200: 'hsl(var(--accent-200))',
+      300: 'hsl(var(--accent-300))',
+      400: 'hsl(var(--accent-400))',
+      500: 'hsl(var(--accent-500))',
+      600: 'hsl(var(--accent-600))',
+      700: 'hsl(var(--accent-700))',
+      800: 'hsl(var(--accent-800))',
+      900: 'hsl(var(--accent-900))',
+      DEFAULT: 'hsl(var(--accent-500))',
+      foreground: 'hsl(var(--accent-foreground))',
+    },
+    // Background colors
+    background: {
+      DEFAULT: 'hsl(var(--background))',
+      foreground: 'hsl(var(--foreground))',
+    },
+    // Muted colors
+    muted: {
+      DEFAULT: 'hsl(var(--muted))',
+      foreground: 'hsl(var(--muted-foreground))',
+    },
+    // Destructive colors
+    destructive: {
+      DEFAULT: 'hsl(var(--destructive))',
+      foreground: 'hsl(var(--destructive-foreground))',
+    },
+    // Border colors
+    border: 'hsl(var(--border))',
+    // Input colors
+    input: 'hsl(var(--input))',
+    // Ring colors
+    ring: 'hsl(var(--ring))',
+  },
+  // Light theme colors
+  light: {
+    primary: {
+      50: 'hsl(210, 100%, 98%)',
+      100: 'hsl(210, 100%, 96%)',
+      200: 'hsl(210, 100%, 90%)',
+      300: 'hsl(210, 100%, 80%)',
+      400: 'hsl(210, 100%, 70%)',
+      500: 'hsl(210, 100%, 60%)',
+      600: 'hsl(210, 100%, 50%)',
+      700: 'hsl(210, 100%, 40%)',
+      800: 'hsl(210, 100%, 30%)',
+      900: 'hsl(210, 100%, 20%)',
+      foreground: 'hsl(0, 0%, 100%)',
+    },
+    secondary: {
+      50: 'hsl(215, 25%, 98%)',
+      100: 'hsl(215, 25%, 96%)',
+      200: 'hsl(215, 25%, 90%)',
+      300: 'hsl(215, 25%, 80%)',
+      400: 'hsl(215, 25%, 70%)',
+      500: 'hsl(215, 25%, 60%)',
+      600: 'hsl(215, 25%, 50%)',
+      700: 'hsl(215, 25%, 40%)',
+      800: 'hsl(215, 25%, 30%)',
+      900: 'hsl(215, 25%, 20%)',
+      foreground: 'hsl(0, 0%, 100%)',
+    },
+    accent: {
+      50: 'hsl(280, 100%, 98%)',
+      100: 'hsl(280, 100%, 96%)',
+      200: 'hsl(280, 100%, 90%)',
+      300: 'hsl(280, 100%, 80%)',
+      400: 'hsl(280, 100%, 70%)',
+      500: 'hsl(280, 100%, 60%)',
+      600: 'hsl(280, 100%, 50%)',
+      700: 'hsl(280, 100%, 40%)',
+      800: 'hsl(280, 100%, 30%)',
+      900: 'hsl(280, 100%, 20%)',
+      foreground: 'hsl(0, 0%, 100%)',
+    },
+    background: {
+      DEFAULT: 'hsl(0, 0%, 100%)',
+      foreground: 'hsl(222.2, 84%, 4.9%)',
+    },
+    muted: {
+      DEFAULT: 'hsl(210, 40%, 96.1%)',
+      foreground: 'hsl(215.4, 16.3%, 46.9%)',
+    },
+    destructive: {
+      DEFAULT: 'hsl(0, 84.2%, 60.2%)',
+      foreground: 'hsl(210, 40%, 98%)',
+    },
+    border: 'hsl(214.3, 31.8%, 91.4%)',
+    input: 'hsl(214.3, 31.8%, 91.4%)',
+    ring: 'hsl(215, 20.2%, 65.1%)',
+  },
+  // Dark theme colors
+  dark: {
+    primary: {
+      50: 'hsl(210, 100%, 20%)',
+      100: 'hsl(210, 100%, 30%)',
+      200: 'hsl(210, 100%, 40%)',
+      300: 'hsl(210, 100%, 50%)',
+      400: 'hsl(210, 100%, 60%)',
+      500: 'hsl(210, 100%, 70%)',
+      600: 'hsl(210, 100%, 80%)',
+      700: 'hsl(210, 100%, 90%)',
+      800: 'hsl(210, 100%, 96%)',
+      900: 'hsl(210, 100%, 98%)',
+      foreground: 'hsl(0, 0%, 0%)',
+    },
+    secondary: {
+      50: 'hsl(215, 25%, 20%)',
+      100: 'hsl(215, 25%, 30%)',
+      200: 'hsl(215, 25%, 40%)',
+      300: 'hsl(215, 25%, 50%)',
+      400: 'hsl(215, 25%, 60%)',
+      500: 'hsl(215, 25%, 70%)',
+      600: 'hsl(215, 25%, 80%)',
+      700: 'hsl(215, 25%, 90%)',
+      800: 'hsl(215, 25%, 96%)',
+      900: 'hsl(215, 25%, 98%)',
+      foreground: 'hsl(0, 0%, 0%)',
+    },
+    accent: {
+      50: 'hsl(280, 100%, 20%)',
+      100: 'hsl(280, 100%, 30%)',
+      200: 'hsl(280, 100%, 40%)',
+      300: 'hsl(280, 100%, 50%)',
+      400: 'hsl(280, 100%, 60%)',
+      500: 'hsl(280, 100%, 70%)',
+      600: 'hsl(280, 100%, 80%)',
+      700: 'hsl(280, 100%, 90%)',
+      800: 'hsl(280, 100%, 96%)',
+      900: 'hsl(280, 100%, 98%)',
+      foreground: 'hsl(0, 0%, 0%)',
+    },
+    background: {
+      DEFAULT: 'hsl(222.2, 84%, 4.9%)',
+      foreground: 'hsl(210, 40%, 98%)',
+    },
+    muted: {
+      DEFAULT: 'hsl(217.2, 32.6%, 17.5%)',
+      foreground: 'hsl(215, 20.2%, 65.1%)',
+    },
+    destructive: {
+      DEFAULT: 'hsl(0, 62.8%, 30.6%)',
+      foreground: 'hsl(210, 40%, 98%)',
+    },
+    border: 'hsl(217.2, 32.6%, 17.5%)',
+    input: 'hsl(217.2, 32.6%, 17.5%)',
+    ring: 'hsl(215, 20.2%, 65.1%)',
+  },
+} as const;
+
+export type ThemeConfig = typeof themeConfig; 
