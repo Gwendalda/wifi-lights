@@ -1,3 +1,7 @@
+/**
+ * Root layout component that provides the base structure for all pages.
+ * Includes metadata, viewport settings, and global providers.
+ */
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
@@ -8,6 +12,10 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 import { Navbar } from "@/components/navbar";
 
+/**
+ * Application metadata configuration.
+ * @type {Metadata}
+ */
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -19,6 +27,10 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Viewport configuration for responsive design and theme colors.
+ * @type {Viewport}
+ */
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -26,6 +38,12 @@ export const viewport: Viewport = {
   ],
 };
 
+/**
+ * Root layout component that wraps all pages with necessary providers and structure.
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components to be rendered
+ * @returns {JSX.Element} Root layout structure
+ */
 export default function RootLayout({
   children,
 }: {

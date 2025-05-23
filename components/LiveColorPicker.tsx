@@ -1,3 +1,7 @@
+/**
+ * LiveColorPicker component that provides a color picker interface for controlling light devices.
+ * Supports live color updates with throttling and device selection.
+ */
 "use client";
 
 import React, { useState, useRef, useCallback, useEffect } from "react";
@@ -9,22 +13,29 @@ interface LiveColorPickerProps {
   isDisabled?: boolean;
 }
 
-// Simple HSL to Hex conversion (consider a library for more robust conversion)
+/**
+ * Converts HSL color values to hexadecimal color code.
+ * @param {number} h - Hue value (0-360)
+ * @param {number} s - Saturation value (0-100)
+ * @param {number} l - Lightness value (0-100)
+ * @returns {string} Hexadecimal color code
+ */
 function hslToHex(h: number, s: number, l: number): string {
   l /= 100;
   const a = (s * Math.min(l, 1 - l)) / 100;
   const f = (n: number) => {
     const k = (n + h / 30) % 12;
     const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-
-    return Math.round(255 * color)
-      .toString(16)
-      .padStart(2, "0"); // convert to Hex and prefix "0" if needed
+    return Math.round(255 * color).toString(16).padStart(2, "0");
   };
-
   return `#${f(0)}${f(8)}${f(4)}`;
 }
 
+/**
+ * Renders a color picker interface for controlling light devices.
+ * @param {LiveColorPickerProps} props - Component props
+ * @returns {JSX.Element} Color picker interface
+ */
 export const LiveColorPicker: React.FC<LiveColorPickerProps> = ({
   selectedDeviceIds,
   onColorChange,
@@ -37,73 +48,82 @@ export const LiveColorPicker: React.FC<LiveColorPickerProps> = ({
 
   const THROTTLE_DELAY = 100; // ms - Adjust as needed for responsiveness vs. load
 
+  /**
+   * Sends color update to selected devices with throttling.
+   * @param {string} hexColor - Color to send
+   */
+  const sendColorUpdate = useCallback(
+    (hexColor: string) => {
+      if (throttleTimeoutRef.current) {
+        clearTimeout(throttleTimeoutRef.current);
+      }
+
+      throttleTimeoutRef.current = setTimeout(() => {
+        const targetDeviceIds = selectedDeviceIds.size > 0
+          ? Array.from(selectedDeviceIds)
+          : undefined;
+
+        onColorChange(hexColor, targetDeviceIds)
+          .then(() => {
+            lastSentColorRef.current = hexColor;
+          })
+          .catch((err) => {
+            console.error("Failed to send color update:", err);
+          });
+        throttleTimeoutRef.current = null;
+      }, THROTTLE_DELAY);
+    },
+    [onColorChange, selectedDeviceIds]
+  );
+
+  /**
+   * Handles color selection based on mouse position.
+   * @param {React.MouseEvent<HTMLDivElement>} event - Mouse event
+   */
   const handleColorPick = useCallback(
     (event: React.MouseEvent<HTMLDivElement>) => {
       if (!pickerRef.current) return;
 
       const rect = pickerRef.current.getBoundingClientRect();
-      // Calculate X position relative to the picker element (0 to 1)
-      const x = Math.max(
-        0,
-        Math.min(1, (event.clientX - rect.left) / rect.width),
-      );
-
-      // Map X position to Hue (0 to 360)
+      const x = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
       const hue = Math.round(x * 360);
-      const saturation = 100; // Fixed saturation
-      const lightness = 50; // Fixed lightness
+      const hexColor = hslToHex(hue, 100, 50);
 
-      const hexColor = hslToHex(hue, saturation, lightness);
-
-      // Only send if color actually changed and throttling allows
       if (hexColor !== lastSentColorRef.current) {
-        // Clear existing timeout if user moves again quickly
-        if (throttleTimeoutRef.current) {
-          clearTimeout(throttleTimeoutRef.current);
-        }
-
-        throttleTimeoutRef.current = setTimeout(() => {
-          // console.log(`Sending color: ${hexColor}`); // Debug log
-          const targetDeviceIds =
-            selectedDeviceIds.size > 0
-              ? Array.from(selectedDeviceIds)
-              : undefined;
-
-          onColorChange(hexColor, targetDeviceIds)
-            .then(() => {
-              lastSentColorRef.current = hexColor; // Update last sent color on success
-            })
-            .catch((err) => {
-              console.error("Failed to send color update:", err);
-              // Optionally show an error state in the picker
-            });
-          throttleTimeoutRef.current = null; // Clear timeout ref after execution
-        }, THROTTLE_DELAY);
+        sendColorUpdate(hexColor);
       }
     },
-    [onColorChange, selectedDeviceIds],
+    [sendColorUpdate]
   );
 
+  /**
+   * Handles mouse down event on the color picker.
+   * @param {React.MouseEvent<HTMLDivElement>} event - Mouse event
+   */
   const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     if (isDisabled) return;
     setIsDragging(true);
-    lastSentColorRef.current = null; // Reset last sent color on new drag
-    handleColorPick(event); // Pick color on initial click
-    // Prevent text selection during drag
+    lastSentColorRef.current = null;
+    handleColorPick(event);
     event.preventDefault();
   };
 
+  /**
+   * Handles mouse move event on the color picker.
+   * @param {React.MouseEvent<HTMLDivElement>} event - Mouse event
+   */
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || isDisabled) return;
     handleColorPick(event);
-    // Prevent text selection during drag
     event.preventDefault();
   };
 
+  /**
+   * Handles mouse up or leave events on the color picker.
+   */
   const handleMouseUpOrLeave = () => {
     if (isDragging) {
       setIsDragging(false);
-      // Clear any pending timeout when dragging stops
       if (throttleTimeoutRef.current) {
         clearTimeout(throttleTimeoutRef.current);
         throttleTimeoutRef.current = null;
@@ -142,7 +162,11 @@ export const LiveColorPicker: React.FC<LiveColorPickerProps> = ({
         aria-valuemax={360}
         aria-label="Live Color Picker"
         tabIndex={isDisabled ? -1 : 0}
-        className={`relative w-full h-16 rounded-md cursor-pointer border ${isDisabled ? "opacity-50 cursor-not-allowed border-gray-700" : "border-gray-500 hover:border-gray-400"}`}
+        className={`relative w-full h-16 rounded-md cursor-pointer border ${
+          isDisabled 
+            ? "opacity-50 cursor-not-allowed border-gray-700" 
+            : "border-gray-500 hover:border-gray-400"
+        }`}
         style={{ background: gradientBackground }}
         title={
           isDisabled

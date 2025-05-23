@@ -1,9 +1,11 @@
+/**
+ * Application providers component that wraps the application with necessary context providers.
+ * Currently provides theme support through next-themes.
+ */
 "use client";
 
 import type { ThemeProviderProps } from "next-themes";
 import * as React from "react";
-// import { HeroUIProvider } from "@heroui/system"; // Removed
-// import { useRouter } from "next/navigation"; // No longer needed if HeroUIProvider is removed and router isn't used otherwise here
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 export interface ProvidersProps {
@@ -11,21 +13,15 @@ export interface ProvidersProps {
   themeProps?: ThemeProviderProps;
 }
 
-// Removed module declaration for "@react-types/shared"
-// declare module "@react-types/shared" {
-//   interface RouterConfig {
-//     routerOptions: NonNullable<
-//       Parameters<ReturnType<typeof useRouter>["push"]>[1]
-//     >;
-//   }
-// }
-
+/**
+ * Wraps the application with theme provider and other necessary context providers.
+ * @param {ProvidersProps} props - Component props
+ * @param {React.ReactNode} props.children - Child components to be wrapped
+ * @param {ThemeProviderProps} [props.themeProps] - Optional theme provider configuration
+ * @returns {JSX.Element} Provider-wrapped application
+ */
 export function Providers({ children, themeProps }: ProvidersProps) {
-  // const router = useRouter(); // No longer needed
-
   return (
-    // <HeroUIProvider navigate={router.push}> // Removed
-      <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
-    // </HeroUIProvider> // Removed
+    <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
   );
 }

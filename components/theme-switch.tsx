@@ -1,3 +1,7 @@
+/**
+ * ThemeSwitch component that allows users to toggle between light and dark themes.
+ * Uses next-themes for theme management and provides a button with sun/moon icons.
+ */
 "use client";
 
 import { FC } from "react";
@@ -5,8 +9,7 @@ import { FC } from "react";
 // import { SwitchProps, useSwitch } from "@heroui/switch"; // Removed
 import { useTheme } from "next-themes";
 import { useIsSSR } from "@react-aria/ssr";
-import clsx from "clsx";
-
+import { Button } from "@/components/ui/button";
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 
 interface ThemeSwitchProps {
@@ -14,6 +17,12 @@ interface ThemeSwitchProps {
   // classNames?: SwitchProps["classNames"]; // Removed as SwitchProps is removed
 }
 
+/**
+ * Renders a theme switch button that toggles between light and dark themes.
+ * @param {ThemeSwitchProps} props - Component props
+ * @param {string} [props.className] - Optional CSS class name for styling
+ * @returns {JSX.Element | null} The theme switch button or null if server-side rendering
+ */
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
@@ -27,13 +36,11 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
   }
 
   return (
-    <button
-      type="button"
+    <Button
+      variant="ghost"
+      size="icon"
       onClick={handleThemeToggle}
-      className={clsx(
-        "p-2 rounded-md hover:bg-accent hover:text-accent-foreground text-muted-foreground",
-        className
-      )}
+      className={className}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
     >
       {theme === "dark" ? (
@@ -41,6 +48,6 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
       ) : (
         <MoonFilledIcon className="h-5 w-5" />
       )}
-    </button>
+    </Button>
   );
 };

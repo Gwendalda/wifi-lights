@@ -1,14 +1,17 @@
 import * as React from "react";
+import { Card as RadixCard, Text, Box, Flex } from "@radix-ui/themes";
 import { cn } from "@/lib/utils";
+
+type TextColor = "ruby" | "gray" | "gold" | "bronze" | "brown" | "yellow" | "amber" | "orange" | "tomato" | "red" | "crimson" | "pink" | "plum" | "purple" | "violet" | "iris" | "indigo" | "blue" | "cyan" | "teal" | "jade" | "green" | "grass" | "mint" | "lime";
 
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
+  <RadixCard
     ref={ref}
     className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      "bg-card text-card-foreground",
       className
     )}
     {...props}
@@ -20,7 +23,7 @@ const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
+  <Box
     ref={ref}
     className={cn("flex flex-col space-y-1.5 p-6", className)}
     {...props}
@@ -32,7 +35,7 @@ const CardTitle = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
-  <h3
+  <div
     ref={ref}
     className={cn(
       "text-2xl font-semibold leading-none tracking-tight",
@@ -59,7 +62,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  <Box ref={ref} className={cn("p-6 pt-0", className)} {...props} />
 ));
 CardContent.displayName = "CardContent";
 
@@ -67,9 +70,9 @@ const CardFooter = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
+  <Flex
     ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
+    className={cn("items-center p-6 pt-0", className)}
     {...props}
   />
 ));

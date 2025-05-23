@@ -1,40 +1,33 @@
 /* eslint-disable */
-"use client"; // Required for hooks like useState, useEffect and event handlers
+"use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Selection } from "@react-types/shared"; // Import Selection type if available, or use 'any'
-// import { Accordion, AccordionItem } from "@heroui/accordion"; // Removed
-// import { Icon } from "@iconify/react"; // To be removed
-// import { Input } from "@heroui/input"; // Removed
-
-// Use the renamed type exported from lib/lights
 import type { LightDeviceData as BulbDeviceData } from "@/lib/lights";
-// import LightVisualization from '@/components/LightVisualization'; // Keep commented if not used
 
 export default function Home() {
   const [devices, setDevices] = useState<BulbDeviceData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isActionLoading, setIsActionLoading] = useState(false); // Separate loading for actions
+  const [isActionLoading, setIsActionLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedDeviceIds, setSelectedDeviceIds] = useState<Set<string>>(
     new Set(),
   );
   const [selectedColor, setSelectedColor] = useState<string>("#ffffff");
   const [selectedTemperature, setSelectedTemperature] = useState<number>(4000);
-  const [brightnessLevel, setBrightnessLevel] = useState<number>(100); // Standard brightness
+  const [brightnessLevel, setBrightnessLevel] = useState<number>(100);
   const [activeDeviceEvents, setActiveDeviceEvents] = useState<Record<string, any[] | null>>({});
   const [isLoadingEvents, setIsLoadingEvents] = useState<boolean>(false);
   const tempThrottleTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const brightnessThrottleTimeoutRef = useRef<NodeJS.Timeout | null>(null); // Throttle for brightness
+  const brightnessThrottleTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const TEMP_THROTTLE_DELAY = 150;
-  const BRIGHTNESS_THROTTLE_DELAY = 150; // Throttle delay for brightness
-  const [rawCommand, setRawCommand] = useState<string>(""); // State for raw command input
-  const [animationDuration, setAnimationDuration] = useState<number>(10); // Added for animation duration
-  const [scriptFile, setScriptFile] = useState<File | null>(null); // State for the script file
-  const [scriptContent, setScriptContent] = useState<string | null>(null); // State for the script content
-  const [isUploadingScript, setIsUploadingScript] = useState<boolean>(false); // Loading state for script upload
-  const [activeControlTab, setActiveControlTab] = useState<string>("brightness_temp"); // State for active tab
-  const [isEventsAccordionOpen, setIsEventsAccordionOpen] = useState<boolean>(false); // State for accordion
+  const BRIGHTNESS_THROTTLE_DELAY = 150;
+  const [rawCommand, setRawCommand] = useState<string>("");
+  const [animationDuration, setAnimationDuration] = useState<number>(10);
+  const [scriptFile, setScriptFile] = useState<File | null>(null);
+  const [scriptContent, setScriptContent] = useState<string | null>(null);
+  const [isUploadingScript, setIsUploadingScript] = useState<boolean>(false);
+  const [activeControlTab, setActiveControlTab] = useState<string>("brightness_temp");
+  const [isEventsAccordionOpen, setIsEventsAccordionOpen] = useState<boolean>(false);
 
   const controlTabs = [
     { key: "brightness_temp", title: "Brightness & Temp" },
@@ -47,27 +40,23 @@ export default function Home() {
     setIsLoading(true);
     setError(null);
     try {
-      // Assuming /api/lights/status fetches the devices.json content
-      // We might need a dedicated endpoint or fetch devices.json directly if static
-      // For now, let's assume it exists and returns { devices: BulbDeviceData[] }
-      const response = await fetch("/api/lights/status"); // Placeholder: Adjust if status endpoint differs
+      const response = await fetch("/api/lights/status");
 
       if (!response.ok) {
         throw new Error(`Failed to fetch status: ${response.statusText}`);
       }
       const data = await response.json();
 
-      setDevices(data.devices || []); // Ensure devices is always an array
+      setDevices(data.devices || []);
     } catch (err: any) {
       console.error("Error fetching device status:", err);
       setError(err.message || "Could not load device status.");
-      setDevices([]); // Clear devices on error
+      setDevices([]);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Generic function to handle API calls for actions
   const handleApiAction = async (
     apiUrl: string,
     body: object | null,
@@ -85,25 +74,22 @@ export default function Home() {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({})); // Try parsing error response
+        const errorData = await response.json().catch(() => ({}));
 
         throw new Error(
           `Failed to ${actionName}: ${response.statusText} ${errorData.error ? `- ${errorData.error}` : ""}`,
         );
       }
       console.log(`${actionName} successful`);
-      // Refetch status after a short delay to allow devices to update
       setTimeout(fetchDeviceStatus, 1000);
     } catch (err: any) {
       console.error(`Error during ${actionName}:`, err);
       setError(err.message || `Could not perform action: ${actionName}.`);
     } finally {
-      // Let the refetch handle the final loading state change
-      setIsActionLoading(false); // Ensure action loading state is always reset
+      setIsActionLoading(false);
     }
   };
 
-  // --- Control Functions (Simplified Target Logic) ---
   const turnOn = () => {
       const targetDeviceIds = selectedDeviceIds.size > 0 ? Array.from(selectedDeviceIds) : undefined;
       handleApiAction("/api/lights/on", targetDeviceIds ? { deviceIds: targetDeviceIds } : {}, "turn on");
@@ -145,9 +131,8 @@ export default function Home() {
   const handleBrightnessChange = (value: number | number[]) => {
     const brightnessValue = Array.isArray(value) ? value[0] : value;
     if (typeof brightnessValue !== "number") return;
-    setBrightnessLevel(brightnessValue); // Update UI immediately
+    setBrightnessLevel(brightnessValue);
 
-    // Update devices state immediately with new brightness
     setDevices(currentDevices => 
       currentDevices.map(device => {
         if (selectedDeviceIds.size === 0 || selectedDeviceIds.has(device.id)) {
@@ -163,12 +148,10 @@ export default function Home() {
       })
     );
 
-    // Clear existing timeout
     if (brightnessThrottleTimeoutRef.current) {
       clearTimeout(brightnessThrottleTimeoutRef.current);
     }
 
-    // Set new timeout to send API request
     brightnessThrottleTimeoutRef.current = setTimeout(async () => {
       const targetDeviceIds = selectedDeviceIds.size > 0 ? Array.from(selectedDeviceIds) : undefined;
       const target = targetDeviceIds ? `${targetDeviceIds.length} selected devices` : 'all devices';
@@ -183,13 +166,11 @@ export default function Home() {
           const errorData = await response.json().catch(() => ({}));
           console.error(
             `Brightness change failed: ${response.statusText} ${errorData.error ? `- ${errorData.error}` : ""}`,
-          );
-          // Revert the optimistic update if the API call fails
+          );  
           fetchDeviceStatus();
         }
       } catch (err: any) {
         console.error("Error during brightness change:", err);
-        // Revert the optimistic update if the API call fails
         fetchDeviceStatus();
       }
       brightnessThrottleTimeoutRef.current = null;
@@ -205,7 +186,6 @@ export default function Home() {
           const response = await fetch('/api/lights/list-events', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              // Send selected IDs if any, otherwise backend fetches all
               body: targetDeviceIds ? JSON.stringify({ deviceIds: targetDeviceIds }) : null
           });
           if (!response.ok) {
@@ -216,12 +196,12 @@ export default function Home() {
               setActiveDeviceEvents(data.eventsByDevice);
           } else {
               console.error("UI: Invalid data received from /list-events", data);
-              setActiveDeviceEvents({}); // Clear on invalid data
+              setActiveDeviceEvents({});
           }
       } catch (error) {
           console.error("UI: Error fetching active events:", error);
           setError(`Failed to load active events. ${error instanceof Error ? error.message : ''}`);
-          setActiveDeviceEvents({}); // Clear on error
+          setActiveDeviceEvents({});
       } finally {
           setIsLoadingEvents(false);
       }
@@ -230,14 +210,12 @@ export default function Home() {
   // --- Handler for Cancelling an Animation ---
   const handleCancelAnimation = async (deviceId: string, eventId: number) => {
     console.log(`UI: Requesting cancellation for event ${eventId} on ${deviceId}`);
-    // Use handleApiAction for consistency with loading/error display
     await handleApiAction(
         '/api/lights/cancel-animation',
         { deviceId, eventId },
         `cancel animation ${eventId} on ${deviceId}`
     );
-    // Optionally, refetch events after cancellation attempt
-    setTimeout(handleFetchEvents, 1000); // Refetch after 1s delay
+    setTimeout(handleFetchEvents, 1000);
   };
 
   // --- Handler for Clearing All Animations ---
@@ -249,26 +227,22 @@ export default function Home() {
           targetDeviceIds ? { deviceIds: targetDeviceIds } : null,
           `clear all animations for ${targetDeviceIds ? 'selected' : 'all'} devices`
       );
-      // Optionally, refetch events after clear attempt
-      setTimeout(handleFetchEvents, 1000); // Refetch after 1s delay
+      setTimeout(handleFetchEvents, 1000);
   };
 
   // --- Handler for Sending Raw Command ---
   const handleSendRawCommand = () => {
       if (rawCommand.trim() === "") {
-          setError("Command cannot be empty."); // Use main error state for simplicity
+          setError("Command cannot be empty.");
           return;
       }
       const targetDeviceIds = selectedDeviceIds.size > 0 ? Array.from(selectedDeviceIds) : undefined;
       console.log(`UI: Sending raw command "${rawCommand}" to ${targetDeviceIds ? 'selected' : 'all'} devices.`);
-      // Use handleApiAction for loading/error handling
       handleApiAction(
           '/api/lights/raw-command',
           { command: rawCommand, ...(targetDeviceIds && { deviceIds: targetDeviceIds }) },
           `send raw command`
       );
-      // Optionally clear textarea after sending
-      // setRawCommand("");
   };
 
   // --- Handler for Animation Duration Change ---
@@ -308,7 +282,7 @@ export default function Home() {
                 const text = e.target?.result;
                 if (typeof text === 'string') {
                     setScriptContent(text);
-                    setError(null); // Clear previous errors
+                      setError(null);
                 } else {
                     setError("Failed to read file content.");
                     setScriptFile(null);
@@ -325,7 +299,7 @@ export default function Home() {
             setError("Invalid file type. Please select a .bat file.");
             setScriptFile(null);
             setScriptContent(null);
-            event.target.value = ''; // Reset file input
+            event.target.value = '';
         }
     } else {
         setScriptFile(null);
@@ -333,7 +307,6 @@ export default function Home() {
     }
   };
 
-  // --- Handler for Uploading Script ---
   const handleUploadScript = async () => {
     if (!scriptFile || !scriptContent) {
       setError("Please select a .bat script file first.");
@@ -369,14 +342,8 @@ export default function Home() {
       }
 
       console.log("Script upload finished:", result);
-      // Provide feedback based on the result object (successfulUploads, failedUploads etc.)
-      // For simplicity, just show a success message or the main error
-      setError(null); // Clear previous errors on success
-      alert(`Script upload process finished. Success: ${result.successfulUploads?.length || 0}, Failed: ${result.failedUploads?.length || 0}, Skipped: ${result.skippedUploads?.length || 0}. Check console for details.`); // Simple feedback
-      // Optionally clear file input after successful upload
-      // setScriptFile(null);
-      // setScriptContent(null);
-      // if (fileInputRef.current) fileInputRef.current.value = ''; // Requires creating a ref
+      setError(null);
+      alert(`Script upload process finished. Success: ${result.successfulUploads?.length || 0}, Failed: ${result.failedUploads?.length || 0}, Skipped: ${result.skippedUploads?.length || 0}. Check console for details.`);
 
     } catch (err: any) {
       console.error("Error uploading script:", err);
@@ -386,31 +353,25 @@ export default function Home() {
     }
   };
 
-  // Fetch initial status on component mount
   useEffect(() => {
     fetchDeviceStatus();
     const intervalId = setInterval(() => {
-        // Force a re-render by updating a dummy state or re-fetching
-        // This is crude; a more sophisticated state management might be better
-        setDevices(currentDevices => [...currentDevices]); // Trigger re-render
-    }, 1000); // Update every second
+        setDevices(currentDevices => [...currentDevices]);
+    }, 1000);
 
-    return () => clearInterval(intervalId); // Cleanup on unmount
+    return () => clearInterval(intervalId);
   }, []);
 
-  // Aggregate events from state for UI display
   const aggregatedEvents = Object.entries(activeDeviceEvents)
       .filter(([, events]) => events !== null && events.length > 0)
       .flatMap(([deviceId, events]) => events?.map(event => ({ ...event, deviceId })) ?? []);
 
-  // Determine target description for titles
   const targetDescription = selectedDeviceIds.size > 0
       ? `(${selectedDeviceIds.size} selected)`
       : devices.length > 0 ? "(All devices)" : "";
 
   return (
     <div className="container mx-auto p-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-      {/* Left Column: Device List & Status + Active Animations */}
       <div className="md:col-span-1 space-y-6">
         <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
           <div className="p-4 border-b border-gray-200 dark:border-gray-700">
@@ -425,7 +386,6 @@ export default function Home() {
                 </div>
               </div>
             )}
-            {/* Show general error here */}
             {error && !isActionLoading && (
               <div className="w-full mb-4 p-3 rounded-md bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700">
                 <p className="text-sm text-red-700 dark:text-red-200"><span className="font-semibold">Error:</span> {error}</p>
@@ -461,13 +421,11 @@ export default function Home() {
                   >
                     <div className="flex justify-between items-center w-full">
                       <span className={`font-medium ${selectedDeviceIds.has(device.id) ? "text-blue-700 dark:text-blue-100" : "text-gray-900 dark:text-white"}`}>{device.id}</span>
-                      {/* Status indicator based on MQTT power state */}
                       <span
                         className={`text-xs px-2 py-0.5 rounded-full ${device.last_status?.power === "ON" ? "bg-green-500 text-white" : "bg-gray-500 text-gray-300"}`}
                       >
                         {device.last_status?.power === "ON" ? "On" : "Off"}
-                      </span>
-                      {/* Show Dimmer % if available */}
+                      </span> 
                       {device.last_status?.power === "ON" && typeof device.last_status?.Dimmer === 'number' && (
                         <span className={`text-xs ml-2 ${selectedDeviceIds.has(device.id) ? "text-blue-600 dark:text-blue-200" : "text-gray-400 dark:text-gray-500"}`}>
                           {device.last_status.Dimmer}%
@@ -481,15 +439,12 @@ export default function Home() {
           </div>
         </div>
 
-        {/* --- Active Events Card (Restructured) --- */}
         <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
           <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-            {/* Title on the left */}
             <div className="flex items-center">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Active Events ({aggregatedEvents.length})</h2>
               <span className="ml-2 text-xs text-gray-500">(Live Query)</span>
             </div>
-            {/* Buttons on the right */}
             <div className="flex items-center gap-1">
               <button
                 type="button"
@@ -515,7 +470,6 @@ export default function Home() {
             </div>
           </div>
           <div className="p-0">
-            {/* Replaced Accordion */}
             <div className="border-t border-gray-200 dark:border-gray-700">
               <h3>
                 <button
@@ -524,7 +478,7 @@ export default function Home() {
                   onClick={() => {
                     const newAccordionState = !isEventsAccordionOpen;
                     setIsEventsAccordionOpen(newAccordionState);
-                    if (newAccordionState) { // Fetch events only when opening
+                    if (newAccordionState) {
                   handleFetchEvents();
               }
                   }}
@@ -539,7 +493,6 @@ export default function Home() {
               </h3>
               {isEventsAccordionOpen && (
                 <div id="active-events-content" className="p-0">
-                {/* Content remains the same: spinner, empty message, or list */}
                   {isLoadingEvents && (
                     <div className="flex justify-center items-center p-4">
                       <div className="flex flex-col items-center">
@@ -581,11 +534,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Center Column: Controls */}
       <div className="md:col-span-2 space-y-6">
-        {/* Top Row of Cards (Controls) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* Power Controls */}
           <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
             <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white">
@@ -611,7 +561,6 @@ export default function Home() {
                   Turn Off
                 </button>
               </div>
-              {/* Action loading indicator for power */}
         {isActionLoading && (
                 <div className="flex justify-center items-center pt-2">
                   <div className="flex items-center">
@@ -623,7 +572,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Color Controls */}
           <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
             <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white">
@@ -649,10 +597,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* Tabs for Brightness, Temperature, Animations etc. */}
         <div className="shadow-lg rounded-lg bg-white dark:bg-gray-800">
-          {/* Tab Headers */}
           <div className="border-b border-gray-200 dark:border-gray-700">
             <nav className="-mb-px flex space-x-4 px-4" aria-label="Tabs">
               {controlTabs.map((tab) => (
@@ -672,7 +617,6 @@ export default function Home() {
             </nav>
                   </div>
 
-          {/* Tab Content */}
           <div>
             {activeControlTab === 'brightness_temp' && (
               <div className="p-4">
@@ -737,7 +681,7 @@ export default function Home() {
                       id="animation-duration-slider"
                       aria-label="Animation Duration"
                       min={1}
-                      max={60} // Example max, adjust as needed
+                      max={60}
                       step={1}
                       value={animationDuration}
                       onChange={(e) => handleAnimationDurationChange(parseInt(e.target.value))}
